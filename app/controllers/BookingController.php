@@ -3,6 +3,9 @@
 class BookingController extends BaseController
 {
     public function getIndex(){
-        return View::make('booking.index');
+        $data = array(
+            'actionLogin' => URL::to('login/sign-in'),
+        );
+        return View::make('booking.index', $data);
     }
 }

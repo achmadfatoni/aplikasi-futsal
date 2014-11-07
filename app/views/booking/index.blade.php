@@ -2,15 +2,18 @@
 
 @section('contents')
 @if(Auth::guest())
-    <div class="row mt">
+    <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <h3 class="text-center">Login</h3>
             <p class="text-center">Anda harus login dulu</p>
         </div>
     </div>
+    <div class="row">
+        @include('layouts.notifikasi')
+    </div>
     <div class="row mt">
         <div class="col-lg-6 col-lg-offset-3">
-            <form method="POST" action="" role="form">
+            <form method="POST" action="{{$actionLogin}}" role="form">
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username"/>
                 </div>

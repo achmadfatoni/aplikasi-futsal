@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'HomeController@getIndex');
-Route::get('/booking', 'BookingController@getIndex');
+Route::controller('/booking', 'BookingController');
+Route::controller('/login', 'LoginController');
