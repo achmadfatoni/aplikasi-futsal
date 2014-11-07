@@ -1,5 +1,8 @@
-# Object file
-*.o
-
-# Ada Library Information
-*.ali
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.env.*.php
+.env.php
+.DS_Store
+Thumbs.db
