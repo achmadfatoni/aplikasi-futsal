@@ -16,11 +16,9 @@
     <!-- Custom styles for this template -->
     {{HTML::style("assets/css/main.css")}}
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    <!-- custom css -->
+    {{HTML::style("assets/css/custom.css")}}
+
 
     @yield('css')
   </head>
@@ -36,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">AKA Benpas</a>
+          <a class="navbar-brand" href="{{URL::to('/')}}">AKA Benpas</a>
         </div>
         <div class="navbar-collapse collapse">
             @include('layouts.menu')
@@ -46,7 +44,7 @@
 
 	<!-- +++++ Welcome Section +++++ -->
 	{{--<div id="ww">--}}
-	    <div class="container">
+	    <div class="container min-height">
 				@yield('contents')
 	    </div> <!-- /container -->
 	{{--</div><!-- /ww -->--}}

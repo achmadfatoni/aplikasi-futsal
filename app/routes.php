@@ -14,3 +14,6 @@
 Route::get('/', 'HomeController@getIndex');
 Route::controller('/booking', 'BookingController');
 Route::controller('/login', 'LoginController');
+Route::controller('/admin', 'AdminController');
+Route::controller('/about', 'AboutController');
+Route::controller('/help', 'HelpController');
