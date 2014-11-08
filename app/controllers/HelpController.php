@@ -26,7 +26,11 @@ class HelpController extends BaseController{
     }
 
     public function guest(){
-
+        $page = Page::find(PAGE_HELP);
+        $data = array(
+            'contents' => $page->contents,
+        );
+        return View::make('help.guest', $data);
     }
 
     public function postSave(){

@@ -26,7 +26,11 @@ class AboutController extends BaseController{
     }
 
     public function guest(){
-
+        $page = Page::find(PAGE_ABOUT);
+        $data = array(
+            'contents' => $page->contents,
+        );
+        return View::make('about.guest', $data);
     }
 
     public function postSave(){

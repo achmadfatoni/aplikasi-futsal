@@ -13,7 +13,7 @@
 <ul class="nav navbar-nav navbar-right">
     <li><a href="{{URL::to('/')}}">Home</a></li>
     <li><a href="{{URL::to('/booking')}}">Booking</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Help</a></li>
+    <li><a href="{{URL::to('about')}}">About</a></li>
+    <li><a href="{{URL::to('help')}}">Help</a></li>
 </ul>    
 @endif
