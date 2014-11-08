@@ -17,11 +17,29 @@ class HelpController extends BaseController{
     }
 
     public function admin(){
-        return View::make('help.admin');
+        $page = Page::find(PAGE_HELP);
+        $data = array(
+            'action' => URL::to('help/save'),
+            'contents' => $page->contents,
+        );
+        return View::make('help.admin', $data);
     }
 
     public function guest(){
 
+    }
+
+    public function postSave(){
+        $contents = Input::get('contents');
+        $type = PAGE_HELP;
+        $page = Page::find(PAGE_HELP);
+        $page->contents = $contents;
+        $page->type = $type;
+        if($page->save()){
+            return Redirect::to('help')->with('success', 'Berhasil di perbarui');
+        }else{
+            return Redirect::to('help')->with('error', 'Gagal di perbarui');
+        }
     }
 
 }
