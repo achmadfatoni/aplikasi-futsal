@@ -8,3 +8,4 @@ define('USER_SILVER', 3);
 //page
 define('PAGE_ABOUT', 1);
 define('PAGE_HELP', 2);
+define('PAGE_PROMO', 3);

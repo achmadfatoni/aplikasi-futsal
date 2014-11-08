@@ -3,6 +3,10 @@
 class HomeController extends BaseController
 {
     public function getIndex(){
-        return View::make('home.index');
+        $promo = Page::find(PAGE_PROMO);
+        $data = array(
+            'promo' => $promo->contents,
+        );
+        return View::make('home.index', $data);
     }
 }
