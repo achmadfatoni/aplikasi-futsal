@@ -17,11 +17,29 @@ class AboutController extends BaseController{
     }
 
     public function admin(){
-        return View::make('about.admin');
+        $page = Page::find(PAGE_ABOUT);
+        $data = array(
+            'action' => URL::to('about/save'),
+            'contents' => $page->contents,
+        );
+        return View::make('about.admin', $data);
     }
 
     public function guest(){
 
+    }
+
+    public function postSave(){
+        $contents = Input::get('contents');
+        $type = PAGE_ABOUT;
+        $page = Page::find(PAGE_ABOUT);
+        $page->contents = $contents;
+        $page->type = $type;
+        if($page->save()){
+            return Redirect::to('about')->with('success', 'Berhasil di perbarui');
+        }else{
+            return Redirect::to('about')->with('error', 'Gagal di perbarui');
+        }
     }
 
 } 
