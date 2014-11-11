@@ -34,20 +34,20 @@
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
-                    {{--@foreach($list as $row)--}}
+                    @foreach($list as $row)
                     <tr>
                         <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$no}}</td>
+                        <td class="text-center">{{$row->username}}</td>
+                        <td class="text-center">{{$row->nama}}</td>
+                        <td class="text-center">{{$row->alamat}}</td>
+                        <td class="text-center">{{$row->no_telp}}</td>
+                        <td class="text-center">{{$row->team}}</td>
+                        <td class="text-center">{{Lang::get('jenis_customer.'.$row->jenis_customer)}}</td>
+                        <td class="text-center"></td>
 
                     </tr>
-                    {{--<?php $no++; ?>--}}
-                    {{--@endforeach--}}
+                    <?php $no++; ?>
+                    @endforeach
                 </tbody>
                 <tfoot>
             </table>

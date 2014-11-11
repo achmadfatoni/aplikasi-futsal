@@ -10,6 +10,7 @@ class CustomerController extends BaseController{
     public function getIndex(){
         $data = array(
             'createUrl' => URL::to('customer/create'),
+            'list' => Customer::all(),
         );
         return View::make('customer.index', $data);
     }
