@@ -18,3 +18,4 @@ Route::controller('/admin', 'AdminController');
 Route::controller('/about', 'AboutController');
 Route::controller('/help', 'HelpController');
 Route::controller('/promo', 'PromoController');
+Route::controller('/customer', 'CustomerController');
