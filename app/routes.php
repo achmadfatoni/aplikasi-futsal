@@ -19,3 +19,4 @@ Route::controller('/about', 'AboutController');
 Route::controller('/help', 'HelpController');
 Route::controller('/promo', 'PromoController');
 Route::controller('/customer', 'CustomerController');
+Route::controller('/pangkat', 'PangkatController');
