@@ -3,7 +3,7 @@
 class PangkatTableSeeder extends Seeder {
     public function run() {
         // Uncomment the below to wipe the table clean before populating
-         DB::table('pangkat')->truncate();
+//         DB::table('pangkat')->truncate();
 
         $pangkat = array(
             '0' => array(
