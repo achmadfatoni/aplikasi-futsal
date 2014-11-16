@@ -15,6 +15,9 @@
     <div class="col-lg-12">
         <a href="{{URL::to('customer/create')}}" class="btn btn-success pull-right">Tambah</a>
     </div>
+    <div class="col-lg-12">
+        @include('layouts.notifikasi')
+    </div>
 </div>
 <div class="row mt">
     <div class="col-lg-12">
@@ -23,7 +26,6 @@
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
-                        <th class="text-center">Username</th>
                         <th class="text-center">Nama</th>
                         <th class="text-center">Alamat</th>
                         <th class="text-center">No Telepon</th>
@@ -37,13 +39,15 @@
                     @foreach($list as $row)
                     <tr>
                         <td class="text-center">{{$no}}</td>
-                        <td class="text-center">{{$row->username}}</td>
                         <td class="text-center">{{$row->nama}}</td>
                         <td class="text-center">{{$row->alamat}}</td>
                         <td class="text-center">{{$row->no_telp}}</td>
                         <td class="text-center">{{$row->team}}</td>
                         <td class="text-center">{{Lang::get('jenis_customer.'.$row->jenis_customer)}}</td>
-                        <td class="text-center"></td>
+                        <td class="text-center">
+                            <a href="{{URL::to('customer/delete/'.$row->id)}}">Hapus</a> | 
+                            <a href="{{URL::to('customer/edit/'.$row->id)}}">Update</a>
+                        </td>
 
                     </tr>
                     <?php $no++; ?>
@@ -63,9 +67,7 @@
 {{HTML::script("assets/js/datatables/dataTables.bootstrap.js")}}
 <script>
     $(document).ready(function () {
-        $('#list').dataTable({
-            "bPaginate": false
-        });
+        $('#list').dataTable();
     });
 </script>
 @stop

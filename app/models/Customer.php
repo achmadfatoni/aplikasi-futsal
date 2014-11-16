@@ -1,11 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Achmad Fatoni
- * Date: 11/12/2014
- * Time: 1:25 AM
- */
 
-class Customer extends Eloquent{
+class Customer extends Eloquent {
 
-} 
+    protected $table = 'customers';
+    protected $fillable = array(
+        'nama',
+        'alamat',
+        'no_telp',
+        'team',
+        'jenis_customer',
+    );
+
+}

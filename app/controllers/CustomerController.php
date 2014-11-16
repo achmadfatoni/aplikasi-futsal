@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Achmad Fatoni
  * Date: 11/12/2014
  * Time: 12:39 AM
  */
+class CustomerController extends BaseController {
 
-class CustomerController extends BaseController{
-    public function getIndex(){
+    public function getIndex() {
         $data = array(
             'createUrl' => URL::to('customer/create'),
             'list' => Customer::all(),
@@ -15,36 +16,47 @@ class CustomerController extends BaseController{
         return View::make('customer.index', $data);
     }
 
-    public function getCreate(){
+    public function getCreate() {
         $data = array(
-          'actionUrl' => URL::to('customer/save'),
+            'actionUrl' => URL::to('customer/save'),
         );
         return View::make('customer.create_edit', $data);
     }
 
-    public function getEdit(){
-
+    public function getEdit($id) {
+        $customer = Customer::find($id);
+        $data = array(
+            'customer' => $customer,
+            'actionUrl' => URL::to('customer/save'),
+            'id' => $id,
+        );
+        return View::make('customer.create_edit', $data);
     }
 
-    public function postSave(){
-        $customers = new Customer();
-        $customers->username = Input::get('username');
-        $customers->nama = Input::get('nama');
-        $customers->password = Input::get('password');
-        $customers->alamat = Input::get('alamat');
-        $customers->no_telp = Input::get('no_telp');
-        $customers->team = Input::get('team');
-        $customers->jenis_customer = Input::get('jenis_customer');
-
-        if($customers->save()){
-            return Redirect::to('customer')->with('success', 'Customer berhasil dibuat');
+    public function postSave() {
+        $input = Input::all();
+        if(Input::has('id')){
+            $customers = Customer::find(Input::get('id'));
+            $action = $customers->update($input);
+            
         }else{
+            $customers = new Customer();
+            $action = $customers->create($input);
+        }
+        if ($action) {
+            return Redirect::to('customer')->with('success', 'Customer berhasil dibuat');
+        } else {
             return Redirect::to('customer')->with('error', 'Customer Gagal dibuat');
         }
-
     }
 
-    public function getDelete(){
-
+    public function getDelete($id) {
+        $customer = Customer::find($id);
+        if ($customer->delete()) {
+            return Redirect::to('customer')->with('success', 'Customer berhasil dihapus');
+        } else {
+            return Redirect::to('customer')->with('error', 'Customer Gagal dihapus');
+        }
     }
-} 
+
+}
