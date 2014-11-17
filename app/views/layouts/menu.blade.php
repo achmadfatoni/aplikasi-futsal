@@ -2,6 +2,7 @@
 <ul class="nav navbar-nav navbar-right">
     <li><a href="{{URL::to('/admin')}}">Beranda</a></li>
     <li><a href="{{URL::to('/customer')}}">Data Customer</a></li>
+    <li><a href="{{URL::to('/lapangan')}}">Lapangan</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Karyawan<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">

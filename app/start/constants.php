@@ -14,3 +14,8 @@ define('PAGE_PROMO', 3);
 //jenis customer
 define('CUSTOMER_GOLD', 1);
 define('CUSTOMER_SILVER', 2);
+
+
+//jenis lapangan
+define('LAPANGAN_SINTESIS', 1);
+define('LAPANGAN_MATRAS', 2);
