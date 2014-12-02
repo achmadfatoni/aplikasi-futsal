@@ -12,7 +12,7 @@
         @include('layouts.notifikasi')
     </div>
     <div class="col-lg-8 col-lg-offset-2">
-        <form class="form-horizontal" action="{{$actionUrl}}" method="POST">
+        <form class="form-horizontal" action="{{$actionUrl}}" method="POST" id="formPendaftaran">
             <input type="hidden" name="id" value="{{isset($id) ? $id : null}}"/>
             <div class="form-group">
                 <label class="control-label col-lg-3" for="nama">Nama</label>
@@ -56,4 +56,10 @@
     </div>
 </div>
 
+@stop
+
+@section('js')
+{{HTML::script('assets/js/jquery.validate.min.js')}}
+@include('customer.js.create_validation')
+    
 @stop
