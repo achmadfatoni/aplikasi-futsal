@@ -42,7 +42,7 @@
                             <form  action="{{URL::to('lapangan/'.$row->id)}}" method="post">
                                 <input type="hidden" name="_method" value="DELETE" />
                                 <a href="{{URL::to('lapangan/'.$row->id.'/edit')}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
-                                <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash white"></i></button>
+                                <button type="submit" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash white"></i></button>
                             </form>
                                                        
                         </td>
@@ -63,6 +63,7 @@
 @section('js')
 {{HTML::script("assets/js/datatables/jquery.dataTables.js")}}
 {{HTML::script("assets/js/datatables/dataTables.bootstrap.js")}}
+{{HTML::script("assets/js/delete-confirmation.js")}}
 <script>
     $(document).ready(function () {
         $('#list').dataTable();

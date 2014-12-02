@@ -47,10 +47,9 @@
                         <td class="text-center">
                             <div>
                                 <a href="{{URL::to('customer/edit/'.$row->id)}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
-                                <a href="{{URL::to('customer/delete/'.$row->id)}}" class="btn btn-danger"><i class="glyphicon glyphicon-trash white"></i></a>
-                            <div>
+                                <a href="{{URL::to('customer/delete/'.$row->id)}}" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash white"></i></a>
+                            </div>
                         </td>
-
                     </tr>
                     <?php $no++; ?>
                     @endforeach
@@ -67,9 +66,10 @@
 @section('js')
 {{HTML::script("assets/js/datatables/jquery.dataTables.js")}}
 {{HTML::script("assets/js/datatables/dataTables.bootstrap.js")}}
+{{HTML::script("assets/js/delete-confirmation.js")}}
 <script>
     $(document).ready(function () {
         $('#list').dataTable();
-    });
+    });    
 </script>
 @stop

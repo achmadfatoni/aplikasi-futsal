@@ -30,7 +30,7 @@ class LapanganTableSeeder extends Seeder {
             ),
             '3' => array(
                 'id' => 4,
-                'nama' => 'Lapangan 2',
+                'nama' => 'Lapangan 4',
                 'jenis_lapangan_id' => LAPANGAN_MATRAS,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
