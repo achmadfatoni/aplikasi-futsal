@@ -39,11 +39,10 @@
                         <td class="text-center">{{$row->nama}}</td>
                         <td class="text-center">{{Lang::get('jenis_lapangan.'.$row->jenis_lapangan_id)}}</td>
                         <td class="text-center">
-                            <a href="{{URL::to('lapangan/'.$row->id.'/edit')}}"><span class="glyphicon glyphicon-edit"></span></a>
-                            &nbsp;   |   &nbsp;
                             <form  action="{{URL::to('lapangan/'.$row->id)}}" method="post">
                                 <input type="hidden" name="_method" value="DELETE" />
-                                <button type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                                <a href="{{URL::to('lapangan/'.$row->id.'/edit')}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
+                                <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash white"></i></button>
                             </form>
                                                        
                         </td>

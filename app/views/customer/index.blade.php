@@ -45,8 +45,10 @@
                         <td class="text-center">{{$row->team}}</td>
                         <td class="text-center">{{Lang::get('jenis_customer.'.$row->jenis_customer)}}</td>
                         <td class="text-center">
-                            <a href="{{URL::to('customer/delete/'.$row->id)}}">Hapus</a> | 
-                            <a href="{{URL::to('customer/edit/'.$row->id)}}">Update</a>
+                            <div>
+                                <a href="{{URL::to('customer/edit/'.$row->id)}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
+                                <a href="{{URL::to('customer/delete/'.$row->id)}}" class="btn btn-danger"><i class="glyphicon glyphicon-trash white"></i></a>
+                            <div>
                         </td>
 
                     </tr>

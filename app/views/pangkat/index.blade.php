@@ -39,8 +39,10 @@
                         <td class="text-center">{{$row->name}}</td>
                         <td class="text-center">{{$row->gaji}}</td>
                         <td class="text-center">
-                            <a href="{{URL::to('pangkat/delete/'.$row->id)}}">Hapus</a> | 
-                            <a href="{{URL::to('pangkat/edit/'.$row->id)}}">Update</a>
+                            <div>
+                                <a href="{{URL::to('pangkat/edit/'.$row->id)}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
+                                <a href="{{URL::to('pangkat/delete/'.$row->id)}}" class="btn btn-danger"><i class="glyphicon glyphicon-trash white"></i></a>
+                            </div>
                         </td>
 
                     </tr>
