@@ -12,7 +12,7 @@
         @include('layouts.notifikasi')
     </div>
     <div class="col-lg-8 col-lg-offset-2">
-        <form class="form-horizontal" action="{{URL::to('lapangan')}}" method="POST">
+        <form class="form-horizontal" action="{{URL::to('lapangan')}}" method="POST" id="formLapangan">
             <div class="form-group">
                 <label class="control-label col-lg-3" for="nama">Nama</label>
                 <div class="col-lg-9">
@@ -37,4 +37,9 @@
     </div>
 </div>
 
+@stop
+
+@section('js')
+    {{HTML::script('assets/js/jquery.validate.min.js')}}
+    @include('lapangans.js.create_validation')
 @stop

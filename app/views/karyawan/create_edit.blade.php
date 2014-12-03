@@ -12,7 +12,7 @@
         @include('layouts.notifikasi')
     </div>
     <div class="col-lg-8 col-lg-offset-2">
-        <form class="form-horizontal" action="{{$actionUrl}}" method="POST">
+        <form class="form-horizontal" action="{{$actionUrl}}" method="POST" id='formKaryawan'>
             <input type="hidden" name="id" value="{{isset($id) ? $id : null}}"/>
             <div class="form-group">
                 <label class="control-label col-lg-3" for="nama">Nama</label>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="no_telp">No Telepon</label>
+                <label class="control-label col-lg-3" for="no_telp">Jabatan</label>
                 <div class="col-lg-9">
                     <select name="pangkat_id" class="form-control">
                         @foreach($pangkatLov as $row)
@@ -45,4 +45,8 @@
     </div>
 </div>
 
+@stop
+@section('js')
+    {{HTML::script('assets/js/jquery.validate.min.js')}}
+    @include('karyawan.js.create_edit_validation')
 @stop
