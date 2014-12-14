@@ -50,7 +50,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <input class="btn btn-success pull-right" value="simpan" type="submit"/>
+                <label for="username" class="col-lg-3 control-label">Username</label>
+                <div class="col-lg-9">
+                    <input type="text" name="username" class="form-control" value="{{isset($customer->username) ? $customer->username : null}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success pull-right" value="Simpan" type="submit"/>
             </div>
         </form>
     </div>

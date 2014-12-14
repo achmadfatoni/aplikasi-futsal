@@ -20,9 +20,21 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-lg-3" for="harga_siang">Harga Siang</label>
+                <div class="col-lg-9">
+                    <input type="text" name="harga_siang" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="harga_malam">Harga Malam</label>
+                <div class="col-lg-9">
+                    <input type="text" name="harga_malam" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-lg-3" for="alamat">Jenis Lapangan</label>
                 <div class="col-lg-9">
-                     <label class="radio-inline">
+                    <label class="radio-inline">
                         <input type="radio" name="jenis_lapangan_id" value="{{LAPANGAN_SINTESIS}}" required="" checked=''}}/> Sintensis
                     </label>
                     <label class="radio-inline">
@@ -40,6 +52,6 @@
 @stop
 
 @section('js')
-    {{HTML::script('assets/js/jquery.validate.min.js')}}
-    @include('lapangans.js.create_validation')
+{{HTML::script('assets/js/jquery.validate.min.js')}}
+@include('lapangans.js.create_validation')
 @stop

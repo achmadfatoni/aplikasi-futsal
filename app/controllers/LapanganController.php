@@ -1,6 +1,11 @@
 <?php
 
 class LapanganController extends BaseController {
+    
+    private $lapangan;
+    public function __construct(Lapangan $lapangan) {
+        $this->lapangan = $lapangan;
+    }
 
     /**
      * Display a listing of the resource.
@@ -9,7 +14,7 @@ class LapanganController extends BaseController {
      */
     public function index() {
         $data = array(
-            'list' => Lapangan::all(),
+            'list' => $this->lapangan->all(),
         );
         return View::make('lapangans.index', $data);
     }
@@ -30,7 +35,7 @@ class LapanganController extends BaseController {
      */
     public function store() {
         $input = Input::all();
-        $store = Lapangan::create($input);
+        $store = $this->lapangan->create($input);
         if($store){
             return Redirect::to('lapangan')->with('success','Lapangan Berhasil ditambah');
         }else{
@@ -56,7 +61,7 @@ class LapanganController extends BaseController {
      * @return Response
      */
     public function edit($id) {
-        $lapangan = Lapangan::find($id);
+        $lapangan = $this->lapangan->find($id);
         $data = array(
             'lapangan' => $lapangan,
         );
@@ -71,7 +76,7 @@ class LapanganController extends BaseController {
      */
     public function update($id) {
         $input = Input::all();
-        $get = Lapangan::find($id);
+        $get = $this->lapangan->find($id);
         $store = $get->update($input);
         if($store){
             return Redirect::to('lapangan')->with('success','Lapangan Berhasil diperbarui');
@@ -87,13 +92,17 @@ class LapanganController extends BaseController {
      * @return Response
      */
     public function destroy($id) {
-        $get = Lapangan::find($id);
+        $get = $this->lapangan->find($id);
         $store = $get->delete();
         if($store){
             return Redirect::to('lapangan')->with('success','Lapangan Berhasil dihapus');
         }else{
             return Redirect::to('lapangan')->with('success','Lapangan Gagal dihapus');
         }
+    }
+    
+    public function setHargaLapangan(){
+        return 'Harga Lapangan';
     }
 
 }

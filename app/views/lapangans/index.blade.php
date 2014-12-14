@@ -27,6 +27,8 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th class="text-center">Nama</th>
+                        <td class="text-center">Harga Siang</td>
+                        <td class="text-center">Harga Malam</td>
                         <th class="text-center">Jenis Lapangan</th>
                         <th class="text-center">Aksi</th>
                     </tr>
@@ -37,6 +39,8 @@
                     <tr>
                         <td class="text-center">{{$no}}</td>
                         <td class="text-center">{{$row->nama}}</td>
+                        <td class="text-center">{{ $row->harga_siang }}</td>
+                        <td class="text-center">{{ $row->harga_malam }}</td>
                         <td class="text-center">{{Lang::get('jenis_lapangan.'.$row->jenis_lapangan_id)}}</td>
                         <td class="text-center">
                             <form  action="{{URL::to('lapangan/'.$row->id)}}" method="post">

@@ -21,4 +21,10 @@ Route::controller('/promo', 'PromoController');
 Route::controller('/customer', 'CustomerController');
 Route::controller('/pangkat', 'PangkatController');
 Route::controller('/karyawan', 'KaryawanController');
+
+/**
+ * Route untuk lapangan
+ */
+
+Route::get('/lapangan/harga-lapangan', 'LapanganController@setHargaLapangan');
 Route::resource('/lapangan', 'LapanganController');
