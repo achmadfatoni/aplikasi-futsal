@@ -15,19 +15,19 @@
         <form class="form-horizontal" action="{{$actionUrl}}" method="POST" id="formPendaftaran">
             <input type="hidden" name="id" value="{{isset($id) ? $id : null}}"/>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="nama">Nama</label>
+                <label class="control-label col-lg-3" for="nama">Nama *</label>
                 <div class="col-lg-9">
                     <input type="text" name="nama" class="form-control" value="{{isset($customer->nama) ? $customer->nama : ''}}"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="alamat">Alamat</label>
+                <label class="control-label col-lg-3" for="alamat">Alamat *</label>
                 <div class="col-lg-9">
                     <input type="text" name="alamat" class="form-control" value="{{isset($customer->alamat) ? $customer->alamat : ''}}"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="no_telp">No Telepon</label>
+                <label class="control-label col-lg-3" for="no_telp">No Telepon *</label>
                 <div class="col-lg-9">
                     <input type="text" name="no_telp" class="form-control" value="{{isset($customer->no_telp) ? $customer->no_telp : ''}}"/>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="username" class="col-lg-3 control-label">Username</label>
+                <label for="username" class="col-lg-3 control-label">Username *</label>
                 <div class="col-lg-9">
                     <input type="text" name="username" class="form-control" value="{{isset($customer->username) ? $customer->username : null}}" />
                 </div>

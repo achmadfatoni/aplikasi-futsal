@@ -10,6 +10,7 @@
                 'number' : true,
               },
               'jenis_customer' : 'required',
+              'username' : 'required',
           },
           messages:{
               'nama' : 'Nama harus diisi',
@@ -19,6 +20,7 @@
                   'number' : 'No Telepon hanya boleh diisi angka',
               },
               'jenis_customer' : 'jenis customer harus diisi',
+              'username' : 'Username harus diisi',
           }
        });
     });

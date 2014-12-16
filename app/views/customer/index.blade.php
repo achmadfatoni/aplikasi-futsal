@@ -27,6 +27,7 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th class="text-center">Nama</th>
+                        <th class="text-center">Username</th>
                         <th class="text-center">Alamat</th>
                         <th class="text-center">No Telepon</th>
                         <th class="text-center">Team</th>
@@ -40,6 +41,7 @@
                     <tr>
                         <td class="text-center">{{$no}}</td>
                         <td class="text-center">{{$row->nama}}</td>
+                        <td class="text-center">{{ $row->username }}</td>
                         <td class="text-center">{{$row->alamat}}</td>
                         <td class="text-center">{{$row->no_telp}}</td>
                         <td class="text-center">{{$row->team}}</td>
