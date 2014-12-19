@@ -8,12 +8,20 @@
  */
 class CustomerController extends BaseController
 {
+    private $customer;
+    public function __construct(Customer $customer)
+    {
+        $this->customer = $customer;
+    }
 
     public function getIndex()
     {
+        $list = $this->customer->with('User')
+            ->get();
+//        return $list;
         $data = array(
             'createUrl' => URL::to('customer/create'),
-            'list' => Customer::all(),
+            'list' => $list,
         );
         return View::make('customer.index', $data);
     }

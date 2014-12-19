@@ -41,7 +41,7 @@
                     <tr>
                         <td class="text-center">{{$no}}</td>
                         <td class="text-center">{{$row->nama}}</td>
-                        <td class="text-center">{{ $row->username }}</td>
+                        <td class="text-center">{{ $row->user ? $row->user->username : null }}</td>
                         <td class="text-center">{{$row->alamat}}</td>
                         <td class="text-center">{{$row->no_telp}}</td>
                         <td class="text-center">{{$row->team}}</td>

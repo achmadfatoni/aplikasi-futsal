@@ -11,4 +11,9 @@ class Customer extends Eloquent {
         'jenis_customer',
     );
 
+    public function user()
+    {
+        return $this->hasOne('User', 'user_identity');
+    }
+
 }
