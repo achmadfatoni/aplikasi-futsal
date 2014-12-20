@@ -3,8 +3,12 @@
 class LapanganController extends BaseController {
     
     private $lapangan;
-    public function __construct(Lapangan $lapangan) {
+    private $jam;
+    private $lapanganjam;
+    public function __construct(Lapangan $lapangan, Jam $jam, Lapanganjam $lapanganjam) {
         $this->lapangan = $lapangan;
+        $this->jam = $jam;
+        $this->lapanganjam = $lapanganjam;
     }
 
     /**
@@ -14,6 +18,7 @@ class LapanganController extends BaseController {
      */
     public function index() {
         $data = array(
+            'detilUrl' => URL::to('lapangan/detil-harga'),
             'list' => $this->lapangan->all(),
         );
         return View::make('lapangans.index', $data);
@@ -101,8 +106,66 @@ class LapanganController extends BaseController {
         }
     }
     
-    public function setHargaLapangan(){
-        return 'Harga Lapangan';
+    public function getDetilHarga($lapanganId){
+        $lapangan = $this->lapangan->findOrFail($lapanganId);
+        $list = $this->jam
+            ->with(array('lapangan' => function($q) use ($lapanganId){
+                $q->where('id','=', $lapanganId);
+            }))->get();
+        $editUrl = URL::to('lapangan/set-detil-harga');
+        $data = array(
+            'list' => $list,
+            'editUrl' => $editUrl,
+            'lapanganId' => $lapanganId,
+            'lapangan' => $lapangan,
+        );
+
+        return View::make('lapangans.detil-harga', $data);
+    }
+
+    public function setDetilHarga($lapanganId, $jamId)
+    {
+        $jam = $this->jam->findOrFail($jamId);
+        $lapanganjam = $this->lapanganjam
+            ->whereLapanganId($lapanganId)
+            ->whereJamId($jamId);
+        $lapanganjamCount = $lapanganjam->count();
+        $lapanganjamGet = $lapanganjam->first();
+        if($lapanganjamCount > 0){
+            $actionUrl = URL::to('/lapangan/update-detil-harga');
+        }else{
+            $actionUrl = URL::to('/lapangan/save-detil-harga');
+        }
+        $data = array(
+            'jamId' => $jamId,
+            'lapanganId' => $lapanganId,
+            'jam' => $jam,
+            'actionUrl' => $actionUrl,
+            'lapanganjam' => $lapanganjamGet,
+        );
+        return View::make('lapangans.set-detil-harga', $data);
+    }
+
+    public function saveDetilHarga()
+    {
+        $jam = $this->jam->findOrFail(Input::get('jam_id'));
+        $harga = $jam->lapangan()->attach(Input::get('lapangan_id'), Input::all());
+        if($harga){
+            return Redirect::to('lapangan/detil-harga/'.Input::get('lapangan_id'))->with('success','Detil Harga Berhasil diperbarui');
+        }else{
+            return Redirect::to('lapangan/detil-harga/'.Input::get('lapangan_id'))->with('success','Detil Harga Berhasil diperbarui');
+        }
+    }
+
+    public function updateDetilHarga()
+    {
+        $jam = $this->jam->findOrFail(Input::get('jam_id'));
+        $harga = $jam->lapangan()->updateExistingPivot(Input::get('lapangan_id'), Input::all());
+        if($harga){
+            return Redirect::to('lapangan/detil-harga/'.Input::get('lapangan_id'))->with('success','Detil Harga Berhasil diperbarui');
+        }else{
+            return Redirect::to('lapangan/detil-harga/'.Input::get('lapangan_id'))->with('success','Detil Harga Berhasil diperbarui');
+        }
     }
 
 }

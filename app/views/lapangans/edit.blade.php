@@ -21,18 +21,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="harga_siang">Harga Siang</label>
-                <div class="col-lg-9">
-                    <input type="text" name="harga_siang" class="form-control" value="{{ isset($lapangan->harga_siang) ? $lapangan->harga_siang : null }}"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-lg-3" for="harga_malam">Harga Malam</label>
-                <div class="col-lg-9">
-                    <input type="text" name="harga_malam" class="form-control" value="{{ isset($lapangan->harga_malam) ? $lapangan->harga_malam : null }}"/>
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="control-label col-lg-3" for="alamat">Jenis Lapangan</label>
                 <div class="col-lg-9">
                      <label class="radio-inline">

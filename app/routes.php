@@ -26,5 +26,13 @@ Route::controller('/karyawan', 'KaryawanController');
  * Route untuk lapangan
  */
 
-Route::get('/lapangan/harga-lapangan', 'LapanganController@setHargaLapangan');
+Route::get('/lapangan/detil-harga/{lapanganId}', 'LapanganController@getDetilHarga');
+Route::get('/lapangan/set-detil-harga/{lapanganId}/{jamId}', 'LapanganController@setDetilHarga');
+Route::post('/lapangan/save-detil-harga','LapanganController@saveDetilHarga');
+Route::post('/lapangan/update-detil-harga','LapanganController@updateDetilHarga');
 Route::resource('/lapangan', 'LapanganController');
+
+/**
+ * Route master jam
+ */
+Route::resource('/jam', 'JamController');

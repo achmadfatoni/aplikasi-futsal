@@ -10,8 +10,6 @@ class LapanganTableSeeder extends Seeder {
             '0' => array(
                 'id' => 1,
                 'nama' => 'Lapangan 1',
-                'harga_siang' => 40000,
-                'harga_malam' => 50000,
                 'jenis_lapangan_id' => LAPANGAN_SINTESIS,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
@@ -19,8 +17,6 @@ class LapanganTableSeeder extends Seeder {
             '1' => array(
                 'id' => 2,
                 'nama' => 'Lapangan 2',
-                'harga_siang' => 40000,
-                'harga_malam' => 50000,
                 'jenis_lapangan_id' => LAPANGAN_MATRAS,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
@@ -28,8 +24,6 @@ class LapanganTableSeeder extends Seeder {
             '2' => array(
                 'id' => 3,
                 'nama' => 'Lapangan 3',
-                'harga_siang' => 40000,
-                'harga_malam' => 50000,
                 'jenis_lapangan_id' => LAPANGAN_SINTESIS,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
@@ -37,8 +31,6 @@ class LapanganTableSeeder extends Seeder {
             '3' => array(
                 'id' => 4,
                 'nama' => 'Lapangan 4',
-                'harga_siang' => 40000,
-                'harga_malam' => 50000,
                 'jenis_lapangan_id' => LAPANGAN_MATRAS,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('PangkatTableSeeder');
         $this->call('KaryawanTableSeeder');
         $this->call('LapanganTableSeeder');
-    }
+    	$this->call('JamTableSeeder');
+	}
 
 }
