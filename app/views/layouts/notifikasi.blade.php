@@ -8,6 +8,6 @@
 <div class="alert alert-danger alert-dismissable">
     <i class="fa fa-ban"></i>
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <p>{{Session::get('error')}}</p>
+    <p class="text-center">{{Session::get('error')}}</p>
 </div>
 @endif

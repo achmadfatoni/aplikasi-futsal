@@ -36,3 +36,12 @@ Route::resource('/lapangan', 'LapanganController');
  * Route master jam
  */
 Route::resource('/jam', 'JamController');
+
+
+/**
+ * Testing purpose
+ */
+
+Route::get('/test', function(){
+    return Auth::user()->role_id;
+});
