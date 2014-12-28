@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label for="username" class="col-lg-3 control-label">Username *</label>
                 <div class="col-lg-9">
-                    <input type="text" name="username" class="form-control" value="{{isset($customer->username) ? $customer->username : null}}" />
+                    <input type="text" name="username" class="form-control" value="{{isset($customer->user->username) ? $customer->user->username : null}}" {{isset($customer->user->username) ? 'disabled' : null}}/>
                 </div>
             </div>
             <div class="form-group">

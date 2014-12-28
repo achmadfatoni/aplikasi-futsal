@@ -18,7 +18,6 @@ class CustomerController extends BaseController
     {
         $list = $this->customer->with('User')
             ->get();
-//        return $list;
         $data = array(
             'createUrl' => URL::to('customer/create'),
             'list' => $list,
@@ -36,7 +35,9 @@ class CustomerController extends BaseController
 
     public function getEdit($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::whereId($id)
+            ->with('user')
+            ->first();
         $data = array(
             'customer' => $customer,
             'actionUrl' => URL::to('customer/update'),
@@ -78,16 +79,33 @@ class CustomerController extends BaseController
     public function postUpdate()
     {
         $input = Input::all();
+        $userId = Input::get('id');
         if (Input::has('id')) {
-            $customers = Customer::find(Input::get('id'));
+            $customers = Customer::find($userId);
             $action = $customers->update($input);
+            if($action){
+                $jenisCustomer = $input['jenis_customer'];
+
+                if($jenisCustomer == CUSTOMER_GOLD){
+                    $roleId = USER_GOLD;
+                }else{
+                    $roleId = USER_SILVER;
+                }
+
+                $user  = User::where('user_identity','=', $userId)
+                    ->update(array(
+                       'role_id' => $roleId,
+                    ));
+
+                if ($user) {
+                    return Redirect::to('customer')->with('success', 'Customer berhasil diperbarui');
+                } else {
+                    return Redirect::to('customer')->with('error', 'Customer Gagal diperbarui');
+                }
+            }
         }
 
-        if ($action) {
-            return Redirect::to('customer')->with('success', 'Customer berhasil diperbarui');
-        } else {
-            return Redirect::to('customer')->with('error', 'Customer Gagal diperbarui');
-        }
+
     }
 
     public function getDelete($id)
