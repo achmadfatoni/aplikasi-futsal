@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('contents')
-@if(Auth::guest())
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <h3 class="text-center">Login</h3>
@@ -26,9 +25,4 @@
             </form>
         </div>
     </div>
-@else
-
-
-
-@endif
 @stop

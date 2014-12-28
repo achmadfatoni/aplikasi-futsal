@@ -7,7 +7,7 @@ class Lapangan extends Eloquent {
 
     public function jam()
     {
-        return $this->belongsToMany('Jam','lapangan_jam');
+        return $this->belongsToMany('Jam','lapangan_jam')->withPivot('harga');
     }
 
 }

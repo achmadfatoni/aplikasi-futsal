@@ -43,5 +43,5 @@ Route::resource('/jam', 'JamController');
  */
 
 Route::get('/test', function(){
-    return Auth::user()->role_id;
+    return Lang::get('bulan');
 });
