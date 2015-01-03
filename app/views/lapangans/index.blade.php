@@ -28,7 +28,7 @@
                         <th class="text-center">No</th>
                         <th class="text-center">Nama</th>
                         <th class="text-center">Jenis Lapangan</th>
-                        <th class="text-center">Detil Harga</th>
+                        <th class="text-center">Harga Sewa</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>

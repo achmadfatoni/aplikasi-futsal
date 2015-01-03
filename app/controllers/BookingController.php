@@ -6,6 +6,7 @@ class BookingController extends BaseController
     private $lapangan;
     private $jam;
     private $booking;
+
     public function __construct(Lapangan $lapangan, Jam $jam, Booking $booking)
     {
         $this->lapangan = $lapangan;
@@ -15,11 +16,11 @@ class BookingController extends BaseController
 
     public function getIndex()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $role = Auth::user()->role_id;
-            if($role == USER_GOLD){
+            if ($role == USER_GOLD) {
                 return Redirect::to('booking/customer');
-            }elseif($role = USER_ADMINISTRATOR){
+            } elseif ($role = USER_ADMINISTRATOR) {
                 return Redirect::to('booking/admin');
             }
         }
@@ -38,21 +39,21 @@ class BookingController extends BaseController
     public function getCustomer($tahun = null, $bulan = null, $tanggal = null)
     {
         $dt = \Carbon\Carbon::now();
-        if ($tahun == null){
+        if ($tahun == null) {
             $tahun = $dt->year;
         }
 
-        if($bulan == null){
+        if ($bulan == null) {
             $bulan = $dt->month;
         }
 
-        if($tanggal == null){
+        if ($tanggal == null) {
             $tanggal = $dt->day;
         }
 
         $lapangans = $this->lapangan
-                        ->with('jam')
-                        ->get();
+            ->with('jam')
+            ->get();
         $data = array(
             'tahun' => $tahun,
             'bulan' => $bulan,
@@ -65,14 +66,22 @@ class BookingController extends BaseController
 
     public function getAdmin()
     {
-        return View::make('booking.admin');
+        $list = $this->booking
+            ->with('customer')
+            ->with('lapangan')
+            ->with('jam')
+            ->get();
+        $data = array(
+            'list' => $list,
+        );
+        return View::make('booking.admin', $data);
     }
 
     public function postSave()
     {
         $bookings = json_decode(Input::get('data'));
-        DB::transaction(function() use ($bookings){
-            foreach($bookings as $booking){
+        DB::transaction(function () use ($bookings) {
+            foreach ($bookings as $booking) {
                 Booking::create(array(
                     'customer_id' => Auth::user()->user_identity,
                     'lapangan_id' => $booking->lapangan_id,
@@ -88,4 +97,15 @@ class BookingController extends BaseController
 
         return $data;
     }
+
+    public function getDelete($id)
+    {
+        $booking = $this->booking->find($id);
+        if ($booking->delete()) {
+            return Redirect::back()->with('success', 'Booking berhasil dihapus');
+        } else {
+            return Redirect::back()->with('error', 'Customer Gagal dihapus');
+        }
+    }
+
 }
