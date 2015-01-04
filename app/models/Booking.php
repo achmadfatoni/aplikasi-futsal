@@ -1,9 +1,12 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class Booking extends Eloquent {
+
+	use SoftDeletingTrait;
 	protected $table = 'booking';
 	protected $guarded = array();
-	protected $softDelete = true;
 	public static $rules = array();
 
 	public function customer()
