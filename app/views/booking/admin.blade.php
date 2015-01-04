@@ -50,7 +50,7 @@
                             <td class="text-center">
                                 @if($data->status == BOOKING_PENDING)
                                     <div>
-                                        <a href="{{URL::to('customer/edit/'.$data->id)}}" class="btn btn-warning"><i
+                                        <a href="{{URL::to('booking/validate/'.$data->id)}}" class="btn btn-warning"><i
                                                     class="glyphicon glyphicon-check white"></i></a>
                                         <a href="{{URL::to('booking/delete/'.$data->id)}}"
                                            class="btn btn-danger btn-delete"><i

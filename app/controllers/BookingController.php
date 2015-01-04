@@ -113,4 +113,17 @@ class BookingController extends BaseController
         }
     }
 
+    public function getValidate($id)
+    {
+        $booking = $this->booking->find($id);
+        $update = $booking->update(array(
+            'status' => BOOKING_VALIDATED
+        ));
+        if ($update) {
+            return Redirect::back()->with('success', 'Booking berhasil divalidasi');
+        } else {
+            return Redirect::back()->with('error', 'Customer Gagal divalidasi');
+        }
+    }
+
 }
