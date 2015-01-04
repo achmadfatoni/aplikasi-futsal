@@ -10,4 +10,9 @@ class Jam extends Eloquent {
 	{
 		return $this->belongsToMany('Lapangan', 'lapangan_jam')->withPivot('harga');
 	}
+
+	public function booking()
+	{
+		return $this->hasMany('Booking');
+	}
 }

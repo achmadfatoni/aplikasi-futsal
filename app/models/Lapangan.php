@@ -10,4 +10,14 @@ class Lapangan extends Eloquent {
         return $this->belongsToMany('Jam','lapangan_jam')->withPivot('harga');
     }
 
+    public function booking()
+    {
+        return $this->hasMany('Booking');
+    }
+
+    public function id()
+    {
+        return $this->hasMany('Lapangan');
+    }
+
 }

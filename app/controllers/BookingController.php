@@ -52,8 +52,14 @@ class BookingController extends BaseController
         }
 
         $lapangans = $this->lapangan
-            ->with('jam')
+            ->with(array('jam' => function ($q) use ($tahun, $bulan, $tanggal){
+                $q->with(array('booking' => function($q) use ($tahun, $bulan, $tanggal){
+                    $q->where('tanggal','=', $tahun.'-'.$bulan.'-'.$tanggal);
+
+                }));
+            }))
             ->get();
+//        return $lapangans;
         $data = array(
             'tahun' => $tahun,
             'bulan' => $bulan,

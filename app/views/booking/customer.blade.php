@@ -40,7 +40,18 @@
         <div class="col-lg-3 centered">
             <h1 class="form-control btn-primary">{{ $lapangan->nama }}</h1>
             @foreach($lapangan->jam as $jam)
-                <h3 class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</h3>
+                <?php
+                    $bookings = $jam->booking;
+                ?>
+                @if($bookings->count() > 0)
+                    @foreach($bookings as $booking)
+                        @if($booking->lapangan_id == $lapangan->id)
+                        <button class="form-control btn btn-danger" disabled>Booked</button>
+                        @endif
+                    @endforeach
+                @else
+                    <button class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</button>
+                @endif
             @endforeach
         </div>
         @endforeach
