@@ -19,3 +19,8 @@ define('CUSTOMER_SILVER', 2);
 //jenis lapangan
 define('LAPANGAN_SINTESIS', 1);
 define('LAPANGAN_MATRAS', 2);
+
+//booking status
+define('BOOKING_PENDING', 1);
+define('BOOKING_CANCELED', 2);
+define('BOOKING_VALIDATED', 3);

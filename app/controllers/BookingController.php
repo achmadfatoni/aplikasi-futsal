@@ -70,6 +70,7 @@ class BookingController extends BaseController
             ->with('customer')
             ->with('lapangan')
             ->with('jam')
+            ->withTrashed()
             ->get();
         $data = array(
             'list' => $list,
@@ -87,6 +88,7 @@ class BookingController extends BaseController
                     'lapangan_id' => $booking->lapangan_id,
                     'jam_id' => $booking->jam_id,
                     'tanggal' => $booking->tanggal,
+                    'status' => BOOKING_PENDING,
                 ));
             }
         });
@@ -101,6 +103,9 @@ class BookingController extends BaseController
     public function getDelete($id)
     {
         $booking = $this->booking->find($id);
+        $booking->update(array(
+            'status' => BOOKING_CANCELED
+        ));
         if ($booking->delete()) {
             return Redirect::back()->with('success', 'Booking berhasil dihapus');
         } else {

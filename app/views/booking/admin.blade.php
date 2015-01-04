@@ -33,6 +33,7 @@
                         <th class="text-center">Tanggal</th>
                         <th class="text-center">Lapangan</th>
                         <th class="text-center">Jam</th>
+                        {{--<th class="text-center">Status</th>--}}
                         <th class="text-center">Aksi</th>
                     </tr>
                     </thead>
@@ -44,12 +45,22 @@
                             <td class="text-center">{{ $data->customer->nama }}</td>
                             <td class="text-center">{{ $data->tanggal }}</td>
                             <td class="text-center">{{ $data->lapangan->nama }}</td>
-                            <td class="text-center">{{ $data->jam->nama}}</td>
+                            <td class="text-center">{{ $data->jam->nama }}</td>
+{{--                            <td class="text-center">{{ Lang::get('book_status.'.$data->status) }}</td>--}}
                             <td class="text-center">
-                                <div>
-                                    <a href="{{URL::to('customer/edit/'.$data->id)}}" class="btn btn-warning"><i class="glyphicon glyphicon-check white"></i></a>
-                                    <a href="{{URL::to('booking/delete/'.$data->id)}}" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-remove-circle white"></i></a>
-                                </div>
+                                @if($data->status == BOOKING_PENDING)
+                                    <div>
+                                        <a href="{{URL::to('customer/edit/'.$data->id)}}" class="btn btn-warning"><i
+                                                    class="glyphicon glyphicon-check white"></i></a>
+                                        <a href="{{URL::to('booking/delete/'.$data->id)}}"
+                                           class="btn btn-danger btn-delete"><i
+                                                    class="glyphicon glyphicon-remove-circle white"></i></a>
+                                    </div>
+                                @elseif($data->status == BOOKING_CANCELED)
+                                    <button class="btn btn-danger" disabled>Dibatalkan</button>
+                                @elseif($data->status == BOOKING_VALIDATED)
+                                    <button class="btn btn-primary" disabled>Valid</button>
+                                @endif
                             </td>
                         </tr>
                         <?php $no++; ?>
