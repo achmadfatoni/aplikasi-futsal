@@ -26,7 +26,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary">Cari</button>
+                    <button class="btn btn-primary cari">Cari</button>
                 </div>
 
             </form>
@@ -46,7 +46,9 @@
                 @if($bookings->count() > 0)
                     @foreach($bookings as $booking)
                         @if($booking->lapangan_id == $lapangan->id)
-                        <button class="form-control btn btn-danger" disabled>Booked</button>
+                            <button class="form-control btn btn-danger" disabled>Booked</button>
+                        @else
+                            <button class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</button>
                         @endif
                     @endforeach
                 @else
@@ -72,14 +74,30 @@
         $(document).ready(function(){
             var booking = $('.booking');
             var booked = [];
+            var cari = $('.cari');
+            var tanggal = $('select[name=tanggal]').val();
+            var bulan = $('select[name=bulan]').val();
+            var tahun = $('select[name=tahun]').val();
+            $('select[name=tanggal]').on('change', function(){
+                tanggal = $('select[name=tanggal]').val();
+                console.log(tanggal);
+            });
+            $('select[name=bulan]').on('change', function(){
+                bulan = $('select[name=bulan]').val();
+                console.log(bulan);
+            }); $('select[name=tahun]').on('change', function(){
+                tahun = $('select[name=tahun]').val();
+                console.log(tahun);
+            });
+            cari.click(function(e){
+                e.preventDefault();
+                window.location.href = "{{ URL::to('booking/customer/')}}" + "/" +tahun+ "/" +bulan+ "/" +tanggal;
+            });
             booking.click(function(){
                 var totalBooked = booked.length;
                 var bookedClass = 'btn-warning';
                 var lapanganId = $(this).attr('lapangan-id');
                 var jamId = $(this).attr('jam-id');
-                var tanggal = $('select[name=tanggal]').val();
-                var bulan = $('select[name=bulan]').val();
-                var tahun = $('select[name=tahun]').val();
                 var time = tahun +'-'+ bulan + '-' + tanggal;
                 $(this).toggleClass(bookedClass);
                 if($(this).hasClass('btn-warning')){
