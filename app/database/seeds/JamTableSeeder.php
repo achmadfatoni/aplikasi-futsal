@@ -5,7 +5,7 @@ class JamTableSeeder extends Seeder {
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		 DB::table('jam')->truncate();
+//		 DB::table('jam')->truncate();
 
 		$jam = array(
 			Jam::create(array(

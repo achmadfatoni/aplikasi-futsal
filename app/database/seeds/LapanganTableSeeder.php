@@ -4,7 +4,7 @@ class LapanganTableSeeder extends Seeder {
 
     public function run() {
         // Uncomment the below to wipe the table clean before populating
-        DB::table('lapangan')->truncate();
+//        DB::table('lapangan')->truncate();
 
         $lapangan = array(
             '0' => array(

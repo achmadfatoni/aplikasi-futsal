@@ -5,7 +5,7 @@ class LapanganJamTableSeeder extends Seeder {
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		 DB::table('lapangan_jam')->truncate();
+//		 DB::table('lapangan_jam')->truncate();
 		$faker = \Faker\Factory::create();
 		$lapangans = Lapangan::all();
 		foreach($lapangans as $lapangan){

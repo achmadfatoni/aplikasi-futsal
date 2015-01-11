@@ -130,7 +130,11 @@
                     data: {data : JSON.stringify(booked)},
                     dataType : 'json',
                     success: function(result){
-                        console.log(result);
+                        var message = result.message;
+                        if(message == 'success')
+                        {
+                            window.location.href = '{{ URL::to(Request::path()) }}';
+                        }
                     }
                 });
             });

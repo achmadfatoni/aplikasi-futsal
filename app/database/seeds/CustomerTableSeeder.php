@@ -4,7 +4,7 @@ class CustomerTableSeeder extends Seeder {
 
     public function run() {
         // Uncomment the below to wipe the table clean before populating
-        DB::table('customers')->truncate();
+//        DB::table('customers')->truncate();
         $faker = \Faker\Factory::create();
         foreach (range(1, 100) as $index) {
             $customer = Customer::create(array(

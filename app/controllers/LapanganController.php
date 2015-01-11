@@ -168,4 +168,9 @@ class LapanganController extends BaseController {
         }
     }
 
+    public function pemakaian()
+    {
+        return View::make('lapangans.pemakaian');
+    }
+
 }

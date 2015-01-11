@@ -7,6 +7,7 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="{{URL::to('/lapangan')}}">Master Lapangan</a></li>
             <li><a href="{{URL::to('/jam')}}">Master Jam Sewa</a></li>
+            <li><a href="{{URL::to('/lapangan/pemakaian')}}">Laporan Pemakaian</a></li>
         </ul>
     </li>
     <li class="dropdown">
@@ -25,5 +26,6 @@
         </ul>
     </li>
 
+    <li><a href="{{URL::to('/password')}}">Ubah Password</a></li>
     <li><a href="{{URL::to('/login/sign-out')}}">Logout</a></li>
 </ul>

@@ -4,7 +4,7 @@ class KaryawanTableSeeder extends Seeder {
 
     public function run() {
         // Uncomment the below to wipe the table clean before populating
-        DB::table('karyawan')->truncate();
+//        DB::table('karyawan')->truncate();
 
         $faker = \Faker\Factory::create();
 

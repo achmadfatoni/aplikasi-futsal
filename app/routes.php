@@ -28,6 +28,7 @@ Route::controller('/karyawan', 'KaryawanController');
 
 Route::get('/lapangan/detil-harga/{lapanganId}', 'LapanganController@getDetilHarga');
 Route::get('/lapangan/set-detil-harga/{lapanganId}/{jamId}', 'LapanganController@setDetilHarga');
+Route::get('/lapangan/pemakaian', 'LapanganController@pemakaian');
 Route::post('/lapangan/save-detil-harga','LapanganController@saveDetilHarga');
 Route::post('/lapangan/update-detil-harga','LapanganController@updateDetilHarga');
 Route::resource('/lapangan', 'LapanganController');
@@ -37,6 +38,10 @@ Route::resource('/lapangan', 'LapanganController');
  */
 Route::resource('/jam', 'JamController');
 
+/**
+ * Ubah Password
+ */
+Route::controller('password', 'PasswordController');
 
 /**
  * Testing purpose
