@@ -25,9 +25,26 @@ class PasswordController extends BaseController
         return View::make('password.index', $data);
     }
 
-    public function getUpdate()
+    public function postUpdate()
     {
-        return Input::all();
+        $oldPassword = Input::get('passwordLama');
+        $currentPassword = Auth::user()->password;
+        $newPassword = Hash::make(Input::get('passwordBaru'));
+        $check = Hash::check($oldPassword, $currentPassword);
+        if($check){
+            $user = User::findOrFail(Auth::user()->id);
+            $update = $user->update(array(
+                'password' => $newPassword,
+            ));
+            if($update){
+                return Redirect::back()->with('success', 'Password berhasil diperbarui');
+            }else{
+                return Redirect::back()->with('error', 'Password gagal diperbarui');
+            }
+        }else{
+            return Redirect::back()->with('error', 'Password lama salah');
+        }
+
     }
 
 }

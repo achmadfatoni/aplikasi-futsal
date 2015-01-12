@@ -43,10 +43,6 @@ Route::resource('/jam', 'JamController');
  */
 Route::controller('password', 'PasswordController');
 
-/**
- * Testing purpose
- */
+//History
+Route::controller('history', 'HistoryController');
 
-Route::get('/test', function(){
-    return Lang::get('bulan');
-});
