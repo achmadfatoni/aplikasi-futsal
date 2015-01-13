@@ -46,3 +46,5 @@ Route::controller('password', 'PasswordController');
 //History
 Route::controller('history', 'HistoryController');
 
+//Periode Gaji
+Route::resource('periode-gaji', 'PeriodeGajiController');
