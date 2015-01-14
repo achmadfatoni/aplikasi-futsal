@@ -24,3 +24,7 @@ define('LAPANGAN_MATRAS', 2);
 define('BOOKING_PENDING', 1);
 define('BOOKING_CANCELED', 2);
 define('BOOKING_VALIDATED', 3);
+
+//status gaji
+define('GAJI_SUDAH', 1);
+define('GAJI_BELUM', 0);

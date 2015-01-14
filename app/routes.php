@@ -48,3 +48,6 @@ Route::controller('history', 'HistoryController');
 
 //Periode Gaji
 Route::resource('periode-gaji', 'PeriodeGajiController');
+
+//Generate Gaji
+Route::get('generate-gaji/{id}','GenerateGajiController@run');

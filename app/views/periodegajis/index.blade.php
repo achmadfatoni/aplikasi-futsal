@@ -5,7 +5,7 @@
 @stop
 
 @section('contents')
-    <div class="row mt">
+    <div class="row mt" xmlns="http://www.w3.org/1999/html">
         <div class="col-lg-12">
             <h3 class="text-center">Periode Gaji</h3>
             <hr>
@@ -29,6 +29,7 @@
                         <th class="text-center">Tahun</th>
                         <th class="text-center">Bulan</th>
                         <th class="text-center">Aksi</th>
+                        <th class="text-center">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,7 +46,13 @@
                                     <button type="submit" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash white"></i></button>
                                 </form>
                             </td>
-
+                            <td class="text-center">
+                                @if($row->gaji->count() > 0)
+                                    <button class="btn btn-default" disabled>Sudah digenerate</button>
+                                @else
+                                    <a href="{{ URL::to('generate-gaji/'. $row->id)  }}" class="btn btn-primary btn-generate">Generate</a>
+                                @endif
+                            </td>
                         </tr>
                         <?php $no++; ?>
                     @endforeach
@@ -67,5 +74,10 @@
         $(document).ready(function () {
             $('#list').dataTable();
         });
+//        var btnGenerate = $('.btn-generate');
+//        btnGenerate.click(function(){
+//            console.log(this);
+//           btnGenerate.html('Proses...');
+//        });
     </script>
 @stop

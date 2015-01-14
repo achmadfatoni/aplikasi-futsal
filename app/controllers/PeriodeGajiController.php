@@ -3,6 +3,7 @@
 class PeriodeGajiController extends BaseController {
 
 	private $periodeGaji;
+
 	public function __construct(PeriodeGaji $periodeGaji)
 	{
 		$this->periodeGaji = $periodeGaji;
@@ -15,7 +16,7 @@ class PeriodeGajiController extends BaseController {
 	 */
 	public function index()
 	{
-		$list = $this->periodeGaji->all();
+		$list = $this->periodeGaji->with('gaji')->get();
 		$data = array(
 			'list' => $list,
 		);

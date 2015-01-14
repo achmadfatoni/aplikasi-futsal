@@ -9,4 +9,9 @@ class PeriodeGaji extends Eloquent
         'tahun'
     );
 	public static $rules = array();
+
+    public function gaji()
+    {
+        return $this->hasMany('gaji');
+    }
 }
