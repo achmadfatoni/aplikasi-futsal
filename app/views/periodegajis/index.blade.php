@@ -40,11 +40,15 @@
                             <td class="text-center">{{ $row->tahun }}</td>
                             <td class="text-center">{{ Lang::get('bulan.'.$row->bulan) }}</td>
                             <td class="text-center">
-                                <form action="{{ URL::to('periode-gaji/'.$row->id) }}" method="POST">
-                                    <input type="hidden" name="_method" value="DELETE"/>
-                                    <a href="{{  URL::to('periode-gaji/'.$row->id.'/edit') }}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
-                                    <button type="submit" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash white"></i></button>
-                                </form>
+                                @if($row->gaji->count() > 0)
+                                    <a href="{{ URL::to('periode-gaji/'.$row->id) }}" class="btn btn-primary">Rincian</a>
+                                @else
+                                    <form action="{{ URL::to('periode-gaji/'.$row->id) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE"/>
+                                        <a href="{{  URL::to('periode-gaji/'.$row->id.'/edit') }}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash white"></i></button>
+                                    </form>
+                                @endif
                             </td>
                             <td class="text-center">
                                 @if($row->gaji->count() > 0)
@@ -74,10 +78,5 @@
         $(document).ready(function () {
             $('#list').dataTable();
         });
-//        var btnGenerate = $('.btn-generate');
-//        btnGenerate.click(function(){
-//            console.log(this);
-//           btnGenerate.html('Proses...');
-//        });
     </script>
 @stop

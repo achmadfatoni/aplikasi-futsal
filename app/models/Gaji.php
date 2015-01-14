@@ -6,4 +6,9 @@ class Gaji extends Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array();
+
+	public function karyawan()
+	{
+		return $this->belongsTo('karyawan');
+	}
 }

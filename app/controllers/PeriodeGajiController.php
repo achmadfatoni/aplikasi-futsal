@@ -4,9 +4,12 @@ class PeriodeGajiController extends BaseController {
 
 	private $periodeGaji;
 
-	public function __construct(PeriodeGaji $periodeGaji)
+	private $gaji;
+
+	public function __construct(PeriodeGaji $periodeGaji, Gaji $gaji)
 	{
 		$this->periodeGaji = $periodeGaji;
+		$this->gaji = $gaji;
 	}
 
 	/**
@@ -63,7 +66,11 @@ class PeriodeGajiController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('periodegajis.show');
+		$gaji = $this->gaji->with('karyawan')->get();
+		$data = array(
+			'list' => $gaji,
+		);
+		return View::make('periodegajis.show', $data);
 	}
 
 	/**
