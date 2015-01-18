@@ -41,7 +41,7 @@
                             <td class="text-center">{{ Lang::get('bulan.'.$row->bulan) }}</td>
                             <td class="text-center">
                                 @if($row->gaji->count() > 0)
-                                    <a href="{{ URL::to('periode-gaji/'.$row->id) }}" class="btn btn-primary">Rincian</a>
+                                    <a href="{{ URL::to('periode-gaji/'.$row->id.'/gaji') }}" class="btn btn-primary">Rincian</a>
                                 @else
                                     <form action="{{ URL::to('periode-gaji/'.$row->id) }}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE"/>

@@ -66,11 +66,6 @@ class PeriodeGajiController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$gaji = $this->gaji->with('karyawan')->get();
-		$data = array(
-			'list' => $gaji,
-		);
-		return View::make('periodegajis.show', $data);
 	}
 
 	/**

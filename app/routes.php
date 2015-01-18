@@ -51,3 +51,6 @@ Route::resource('periode-gaji', 'PeriodeGajiController');
 
 //Generate Gaji
 Route::get('generate-gaji/{id}','GenerateGajiController@run');
+
+//view gaji
+Route::resource('periode-gaji.gaji','GajiController');

@@ -15,7 +15,7 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="{{URL::to('karyawan')}}">Karyawan</a></li>
             <li><a href="{{URL::to('pangkat')}}">Pangkat</a></li>
-            <li><a href="{{URL::to('periode-gaji')}}">Periode Gaji</a></li>
+            <li><a href="{{URL::to('periode-gaji')}}">Gaji</a></li>
         </ul>
     </li>
     <li class="dropdown">
