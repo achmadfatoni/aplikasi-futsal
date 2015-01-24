@@ -45,6 +45,7 @@
                 var totalBooked = booked.length;
                 var bookedClass = 'btn-warning';
                 var lapanganId = $(this).attr('lapangan-id');
+                var maxBook = 2;
                 var jamId = $(this).attr('jam-id');
                 var time = tahun +'-'+ bulan + '-' + tanggal;
                 $(this).toggleClass(bookedClass);
@@ -54,8 +55,12 @@
                         'jam_id': jamId,
                         'tanggal' : time,
                     };
-
-                    booked.push(booking);
+                    if(booked.length >= maxBook){
+                        $(this).removeClass('btn-warning');
+                        alert('Maksimal 2 Booking Lapangan');
+                    }else{
+                        booked.push(booking);
+                    }
 //                    alert('booked');
                 }else{
                     for (var i =0; i < totalBooked; i++){
@@ -66,7 +71,7 @@
                     }
 //                    alert('Book Canceled')
                 }
-                console.log(booked);
+                console.log(booked.length);
 
             });
             var proses = $('.proses');;
