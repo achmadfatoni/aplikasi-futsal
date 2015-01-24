@@ -59,7 +59,6 @@ class BookingController extends BaseController
                 }));
             }))
             ->get();
-//        return $lapangans;
         $data = array(
             'tahun' => $tahun,
             'bulan' => $bulan,
