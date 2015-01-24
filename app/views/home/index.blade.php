@@ -11,3 +11,5 @@
     @include('booking.partial.book')
 
 @stop
+@section('js')
+@endsection

@@ -11,18 +11,24 @@ class HomeController extends BaseController
         $this->lapangan = $lapangan;
     }
 
-    public function getIndex($tahun = null, $bulan = null, $tanggal = null)
+    public function getIndex()
     {
         $dt = \Carbon\Carbon::now();
-        if ($tahun == null) {
+        if (Input::has('tahun')) {
+            $tahun = Input::get('tahun');
+        }else{
             $tahun = $dt->year;
         }
 
-        if ($bulan == null) {
+        if (Input::has('bulan')) {
+            $bulan = Input::get('bulan');
+        }else{
             $bulan = $dt->month;
         }
 
-        if ($tanggal == null) {
+        if (Input::has('tanggal')) {
+            $tanggal = Input::get('tanggal');
+        }else{
             $tanggal = $dt->day;
         }
 
