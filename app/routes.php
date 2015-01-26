@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::get('/', 'HomeController@getIndex');
 Route::controller('/home', 'HomeController');
 Route::controller('/booking', 'BookingController');
@@ -32,6 +31,7 @@ Route::get('/lapangan/set-detil-harga/{lapanganId}/{jamId}', 'LapanganController
 Route::get('/lapangan/pemakaian', 'LapanganController@pemakaian');
 Route::post('/lapangan/save-detil-harga','LapanganController@saveDetilHarga');
 Route::post('/lapangan/update-detil-harga','LapanganController@updateDetilHarga');
+Route::get('lapangan/export','LapanganController@export');
 Route::resource('/lapangan', 'LapanganController');
 
 /**

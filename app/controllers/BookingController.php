@@ -12,6 +12,9 @@ class BookingController extends BaseController
         $this->lapangan = $lapangan;
         $this->jam = $jam;
         $this->booking = $booking;
+        $this->beforeFilter('auth', array('except' => array('getIndex')));
+        $this->beforeFilter('admin', array('only' => array('getAdmin')));
+//        $this->beforeFilter('auth', array('only' => array('customer', 'admin')));
     }
 
     public function getIndex()

@@ -5,10 +5,12 @@ class LapanganController extends BaseController {
     private $lapangan;
     private $jam;
     private $lapanganjam;
-    public function __construct(Lapangan $lapangan, Jam $jam, Lapanganjam $lapanganjam) {
+    private $booking;
+    public function __construct(Lapangan $lapangan, Jam $jam, Lapanganjam $lapanganjam, Booking $booking) {
         $this->lapangan = $lapangan;
         $this->jam = $jam;
         $this->lapanganjam = $lapanganjam;
+        $this->booking = $booking;
     }
 
     /**
@@ -170,7 +172,43 @@ class LapanganController extends BaseController {
 
     public function pemakaian()
     {
-        return View::make('lapangans.pemakaian');
+        $dt = \Carbon\Carbon::now();
+        $bulan = $dt->month;
+        if(Input::has('bulan')){
+            $bulan = Input::get('bulan');
+        }
+        $list = $this->booking
+            ->with('customer')
+            ->with('lapangan')
+            ->with('jam')
+            ->whereStatus(BOOKING_VALIDATED)
+            ->get();
+
+        $data = [
+            'bulans' => Lang::get('bulan'),
+            'list' => $list,
+            'bulan' => $bulan,
+        ];
+        return View::make('lapangans.pemakaian', $data);
+    }
+
+    public function export(){
+        Excel::create('Laporan', function($excel){
+            $excel->sheet('New sheet', function($sheet) {
+                $list = $this->booking
+                    ->with('customer')
+                    ->with('lapangan')
+                    ->with('jam')
+                    ->whereStatus(BOOKING_VALIDATED)
+                    ->get();
+                $data = [
+                    'list' => $list,
+                ];
+                $sheet->loadView('lapangans.export', $data);
+
+            });
+
+        })->export('xls');
     }
 
 }

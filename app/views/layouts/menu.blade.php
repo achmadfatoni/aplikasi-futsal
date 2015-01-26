@@ -4,6 +4,8 @@
         @include('menu.administrator')
     @elseif($role == USER_GOLD)
         @include('menu.customer')
+    @elseif($role == USER_KASIR)
+        @include('menu.kasir')
     @endif
 @else
     <ul class="nav navbar-nav navbar-right">

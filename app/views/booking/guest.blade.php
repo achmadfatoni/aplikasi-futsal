@@ -8,7 +8,9 @@
         </div>
     </div>
     <div class="row">
-        @include('layouts.notifikasi')
+        <div class="col-lg-6 col-lg-offset-3">
+            @include('layouts.notifikasi')
+        </div>
     </div>
     <div class="row mt">
         <div class="col-lg-6 col-lg-offset-3">

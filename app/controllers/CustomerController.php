@@ -12,6 +12,8 @@ class CustomerController extends BaseController
     public function __construct(Customer $customer)
     {
         $this->customer = $customer;
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
     }
 
     public function getIndex()
@@ -116,6 +118,7 @@ class CustomerController extends BaseController
         } else {
             return Redirect::to('customer')->with('error', 'Customer Gagal dihapus');
         }
+        return Redirect::back();
     }
 
 }

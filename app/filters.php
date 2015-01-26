@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('booking')->with('error', 'Anda Harus Login');
 		}
 	}
 });
@@ -88,3 +88,11 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('admin', function(){
+	if(Auth::user()->role_id != USER_ADMINISTRATOR){
+		return Redirect::to('booking')->with('error', 'Anda Tidak bisa mengakses halaman yang diminta');
+	}
+
+});
+
