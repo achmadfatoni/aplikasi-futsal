@@ -21,7 +21,7 @@ class BookingController extends BaseController
     {
         if (Auth::check()) {
             $role = Auth::user()->role_id;
-            if ($role == USER_GOLD) {
+            if ($role == USER_GOLD || $role == USER_SILVER) {
                 return Redirect::to('booking/customer');
             } elseif ($role = USER_ADMINISTRATOR) {
                 return Redirect::to('booking/admin');

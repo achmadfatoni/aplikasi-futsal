@@ -2,7 +2,7 @@
     <?php $role = Auth::user()->role_id; ?>
     @if($role == USER_ADMINISTRATOR)
         @include('menu.administrator')
-    @elseif($role == USER_GOLD)
+    @elseif($role == USER_GOLD or $role == USER_SILVER)
         @include('menu.customer')
     @elseif($role == USER_KASIR)
         @include('menu.kasir')

@@ -29,6 +29,7 @@
                         <th class="text-center">Tahun</th>
                         <th class="text-center">Bulan</th>
                         <th class="text-center">Aksi</th>
+                        <th class="text-center">Laporan</th>
                         <th class="text-center">Status</th>
                     </tr>
                     </thead>
@@ -50,6 +51,7 @@
                                     </form>
                                 @endif
                             </td>
+                            <th class="text-center"><a href="#"><i class="glyphicon glyphicon-file"></i> Laporan</a></th>
                             <td class="text-center">
                                 @if($row->gaji->count() > 0)
                                     <button class="btn btn-default" disabled>Sudah digenerate</button>
