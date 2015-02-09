@@ -32,7 +32,7 @@
 <div class="row mt">
     @foreach($lapangans as $lapangan)
         <div class="col-lg-3 centered">
-            <h1 class="form-control btn-primary">{{ $lapangan->nama }}</h1>
+            <h1 class="form-control btn-primary">{{ $lapangan->nama }} | {{ Lang::get('jenis_lapangan.'.$lapangan->jenis_lapangan_id) }}</h1>
             @foreach($lapangan->jam as $jam)
                 <?php
                 $bookings = $jam->booking;

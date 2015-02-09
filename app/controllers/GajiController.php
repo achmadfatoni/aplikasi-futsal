@@ -13,14 +13,29 @@ class GajiController extends BaseController {
 	 *
 	 * @return Response
 	 */
+//	public function index($periodeId)
+//	{
+//		$gaji = $this->gaji->with('karyawan')->get();
+//		$data = array(
+//			'list' => $gaji,
+//			'periodeId' => $periodeId,
+//		);
+//		return View::make('gajis.index', $data);
+//	}
+
 	public function index($periodeId)
 	{
-		$gaji = $this->gaji->with('karyawan')->get();
-		$data = array(
-			'list' => $gaji,
-			'periodeId' => $periodeId,
-		);
-		return View::make('gajis.index', $data);
+		Excel::create('Laporan Gaji', function($excel) use ($periodeId){
+			$excel->sheet('New Sheet', function($sheet) use ($periodeId){
+				$gaji = $this->gaji->with('karyawan')->get();
+				$data = array(
+					'list' => $gaji,
+					'periodeId' => $periodeId,
+				);
+				$sheet->loadView('gajis.laporan', $data);
+			});
+		})->export('xls');
+
 	}
 
 	/**
@@ -94,5 +109,7 @@ class GajiController extends BaseController {
 	{
 		//
 	}
+
+
 
 }

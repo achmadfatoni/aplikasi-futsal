@@ -29,7 +29,7 @@
                         <th class="text-center">Tahun</th>
                         <th class="text-center">Bulan</th>
                         <th class="text-center">Aksi</th>
-                        <th class="text-center">Laporan</th>
+                        {{--<th class="text-center">Laporan</th>--}}
                         <th class="text-center">Status</th>
                     </tr>
                     </thead>
@@ -42,7 +42,8 @@
                             <td class="text-center">{{ Lang::get('bulan.'.$row->bulan) }}</td>
                             <td class="text-center">
                                 @if($row->gaji->count() > 0)
-                                    <a href="{{ URL::to('periode-gaji/'.$row->id.'/gaji') }}" class="btn btn-primary">Rincian</a>
+                                    {{--<a href="{{ URL::to('periode-gaji/'.$row->id.'/gaji') }}" class="btn btn-primary">Rincian</a>--}}
+                                    <a href="{{ URL::to('periode-gaji/'.$row->id.'/gaji') }}"><i class="glyphicon glyphicon-file"></i> Laporan</a>
                                 @else
                                     <form action="{{ URL::to('periode-gaji/'.$row->id) }}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE"/>
@@ -51,7 +52,7 @@
                                     </form>
                                 @endif
                             </td>
-                            <th class="text-center"><a href="#"><i class="glyphicon glyphicon-file"></i> Laporan</a></th>
+                            {{--<th class="text-center"><a href="#"><i class="glyphicon glyphicon-file"></i> Laporan</a></th>--}}
                             <td class="text-center">
                                 @if($row->gaji->count() > 0)
                                     <button class="btn btn-default" disabled>Sudah digenerate</button>
