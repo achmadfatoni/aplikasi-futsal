@@ -8,19 +8,30 @@
 @section('contents')
 <div class="row mt">
     <div class="col-lg-12 centered">
-        {{--<form class="form-inline">--}}
-            {{--<div class="form-group">--}}
-                {{--<select name="bulan" class="form-control">--}}
-                    {{--@foreach($bulans as $key => $value)--}}
-                        {{--<option value="{{ $key }}" {{($key == $bulan) ?  'selected' : null}}> {{ $value }} </option>--}}
-                    {{--@endforeach--}}
-                {{--</select>--}}
-            {{--</div>--}}
-            {{--<div class="form-group">--}}
-                {{--<button class="btn btn-primary">Tampilkan</button>--}}
-            {{--</div>--}}
-        {{--</form>--}}
-        <a href="{{ URL::to('lapangan/export') }}" class="pull-right btn btn-primary white"><i class="glyphicon glyphicon-file white"></i> Export</a>
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="date" name="dari" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="date" name="sampai" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Tampilkan</button>
+            </div>
+        </form>
+        <br>
+        <form class="form-inline" action="{{ URL::to('lapangan/export') }}">
+            <div class="form-group">
+                <input type="date" name="dari" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="date" name="sampai" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button class="pull-right btn btn-primary white"><i class="glyphicon glyphicon-file white"></i> Export</button>
+                {{--<a href="" class="pull-right btn btn-primary white"><i class="glyphicon glyphicon-file white"></i> Export</a>--}}
+            </div>
+        </form>
     </div>
 </div>
 
