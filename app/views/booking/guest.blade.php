@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row mt">
-        <div class="col-lg-6 col-lg-offset-3">
+        <div class="col-md-6 col-md-offset-3">
             <form method="POST" action="{{$actionLogin}}" role="form">
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username"/>
