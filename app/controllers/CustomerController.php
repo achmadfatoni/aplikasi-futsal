@@ -52,29 +52,36 @@ class CustomerController extends BaseController
     {
         $input = Input::all();
         $customers = new Customer();
-        $action = $customers->create($input);
+        $status = false;
+        $rules = array(
+            'username' => 'required|unique:users'
+        );
 
-        if ($action) {
-            $user['username'] = $input['username'];
-            $user['password'] = Hash::make('1234');
-            $user['user_identity'] = $action->id;
-            $jenisCustomer = $input['jenis_customer'];
+        $validator = Validator::make($input, $rules);
 
-            if($jenisCustomer == CUSTOMER_GOLD){
-                $roleId = USER_GOLD;
-            }else{
-                $roleId = USER_SILVER;
-            }
+        if($validator->fails()){
+            $messages = $validator->messages();
+            return Redirect::back()->with('error', 'Customer Gagal dibuat')
+                ->withErrors($validator)
+                ->withInput($input);
+        }else{
+            $transaction = DB::transaction(function() use ($status, $customers, $input){
+                $action = $customers->create($input);
+                $user['username'] = $input['username'];
+                $user['password'] = Hash::make('1234');
+                $user['user_identity'] = $action->id;
+                $jenisCustomer = $input['jenis_customer'];
 
-            $user['role_id'] = $roleId;
-            $createUser = User::create($user);
-            if($createUser){
-                return Redirect::to('customer')->with('success', 'Customer berhasil dibuat');
-            }
-            return Redirect::to('customer')->with('error', 'Customer Gagal dibuat');
-
-        } else {
-            return Redirect::to('customer')->with('error', 'Customer Gagal dibuat');
+                if($jenisCustomer == CUSTOMER_GOLD){
+                    $roleId = USER_GOLD;
+                }else{
+                    $roleId = USER_SILVER;
+                }
+                $user['role_id'] = $roleId;
+                User::create($user);
+                return true;
+            });
+            return Redirect::to('customer')->with('success', 'Customer berhasil dibuat');
         }
     }
 

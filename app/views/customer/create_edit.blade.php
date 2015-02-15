@@ -11,13 +11,24 @@
     <div class="col-md-8 col-md-offset-2">
         @include('layouts.notifikasi')
     </div>
+
+    @if($errors->has())
+        <div class="col-md-8 col-md-offset-2">
+            <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            <ul>
+        </div>
+    @endif
+
     <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal" action="{{$actionUrl}}" method="POST" id="formPendaftaran">
             <input type="hidden" name="id" value="{{isset($id) ? $id : null}}"/>
             <div class="form-group">
                 <label class="control-label col-md-3" for="nama">Nama *</label>
                 <div class="col-md-9">
-                    <input type="text" name="nama" class="form-control" value="{{isset($customer->nama) ? $customer->nama : ''}}"/>
+                    <input type="text" name="nama" class="form-control" value="{{ isset($customer->nama) ? $customer->nama : ''}}"/>
                 </div>
             </div>
             <div class="form-group">
