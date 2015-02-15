@@ -2,7 +2,7 @@
 
 @section('contents')
     <div class="row mt">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <h2 class="text-center">Promo Hari Ini</h2>
             <hr>
             <div>{{$promo}}</div>

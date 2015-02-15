@@ -7,7 +7,7 @@
 
 @section('contents')
 <div class="row mt">
-    <div class="col-lg-12 centered">
+    <div class="col-md-12 centered">
         <form class="form-inline">
             <div class="form-group">
                 <input type="date" name="dari" class="form-control"/>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="row mt">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="table-responsive">
             <table id='list' class="table table-bordered table-striped">
                 <thead>

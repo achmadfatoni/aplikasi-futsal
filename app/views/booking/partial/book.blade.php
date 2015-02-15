@@ -1,5 +1,5 @@
 <div class="row mt">
-    <div class="col-lg-6 col-lg-offset-3 centered">
+    <div class="col-md-6 col-md-offset-3 centered">
         <form class="form-inline">
             <div class="form-group">
                 <select name="tanggal" class="form-control">

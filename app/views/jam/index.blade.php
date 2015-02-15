@@ -6,21 +6,21 @@
 
 @section('contents')
 <div class="row mt">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <h3>Jam</h3>
         <hr>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <a href="{{URL::to('jam/create')}}" class="btn btn-success pull-right">Tambah</a>
     </div>
-    <div class="col-lg-12">
+    <div class="col-md-12">
         @include('layouts.notifikasi')
     </div>
 </div>
 <div class="row mt">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="table-responsive">
             <table id='list' class="table table-bordered table-striped">
                 <thead>

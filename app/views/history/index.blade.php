@@ -7,13 +7,13 @@
 
 @section('contents')
     <div class="row mt">
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <h3 class="text-center">History</h3>
             <hr>
         </div>
     </div>
     <div class="row mt">
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <div class="table-responsive">
                 <table id='list' class="table table-bordered table-striped">
                     <thead>

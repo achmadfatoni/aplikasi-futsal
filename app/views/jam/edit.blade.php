@@ -2,21 +2,21 @@
 
 @section('contents')
 <div class="row mt">
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-md-8 col-md-offset-2">
         <h3>TAMBAH JAM</h3>
         <hr>
     </div>
 </div>
 <div class="row mt">
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-md-8 col-md-offset-2">
         @include('layouts.notifikasi')
     </div>
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal" action="{{URL::to('jam/'.$jam->id)}}" method="post" id="formJam">
             <input type="hidden" name="_method" value="PUT" />
             <div class="form-group">
-                <label class="control-label col-lg-3" for="nama">Nama</label>
-                <div class="col-lg-9">
+                <label class="control-label col-md-3" for="nama">Nama</label>
+                <div class="col-md-9">
                     <input type="text" name="nama" class="form-control" value="{{isset($jam->nama) ? $jam->nama : null}}"/>
                 </div>
             </div>

@@ -7,10 +7,10 @@
     </div>
     @include('booking.partial.book')
     <div class="row mt">
-        <div class="col-lg-12 centered">
+        <div class="col-md-12 centered">
             {{--<form action="{{URL::to('booking/save')}}" method="post">--}}
                 {{--<input type="hidden" name="data" />--}}
-                <button class="btn btn-lg btn-danger proses">PROSES</button>
+                <button class="btn btn-md btn-danger proses">PROSES</button>
             {{--</form>--}}
 
         </div>

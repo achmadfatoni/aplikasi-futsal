@@ -55,7 +55,7 @@
 	<div id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 centered">
+				<div class="col-md-12 centered">
 				    <p>&copy;Copyright <a href="#">AKA Benpas</a> 2014</p>
 				</div>
 			</div>
