@@ -6,9 +6,10 @@ class CustomerTableSeeder extends Seeder {
         // Uncomment the below to wipe the table clean before populating
 //        DB::table('customers')->truncate();
         $faker = \Faker\Factory::create();
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 10) as $index) {
+            $name = $faker->userName;
             $customer = Customer::create(array(
-                'nama' => $faker->name,
+                'nama' => $name,
                 'alamat' => $faker->address,
                 'no_telp' => $faker->phoneNumber,
                 'team' => $faker->word,
@@ -16,7 +17,7 @@ class CustomerTableSeeder extends Seeder {
             ));
 
             if($customer){
-                $user['username'] = $faker->userName;
+                $user['username'] = $name;
                 $user['password'] = Hash::make('1234');
                 $user['user_identity'] = $customer->id;
                 $jenisCustomer = $customer->jenis_customer;

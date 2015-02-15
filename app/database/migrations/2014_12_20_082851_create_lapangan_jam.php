@@ -13,9 +13,16 @@ class CreateLapanganJam extends Migration {
 	public function up()
 	{
 		Schema::create('lapangan_jam', function(Blueprint $table) {
-			$table->integer('lapangan_id')->references('id')->on('lapangan');
-			$table->integer('jam_id')->references('id')->on('jam');
-			$table->timestamps();
+            $table->integer('lapangan_id')->unsigned();
+			$table->foreign('lapangan_id')->references('id')
+                ->on('lapangan')
+                ->onDelete('cascade');
+			$table->integer('jam_id')->unsigned();
+			$table->foreign('jam_id')->references('id')
+                ->on('jam')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('harga')->nullable();
+            $table->timestamps();
 			$table->primary(array('lapangan_id', 'jam_id'));
 		});
 	}

@@ -15,20 +15,13 @@ class PangkatTableSeeder extends Seeder {
             ),
             '1' => array(
                 'id' => 2,
-                'name' => 'Kasir',
-                'gaji' => 3000000,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
-            ),
-            '2' => array(
-                'id' => 3,
                 'name' => 'Cleaning Service',
                 'gaji' => 2500000,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ),
-            '3' => array(
-                'id' => 4,
+            '2' => array(
+                'id' => 3,
                 'name' => 'Jaga Parkir',
                 'gaji' => 2000000,
                 'created_at' => \Carbon\Carbon::now(),

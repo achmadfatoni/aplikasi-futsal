@@ -18,10 +18,18 @@ class CreateBooking extends Migration {
 			$table->date('tanggal');
 			$table->unsignedInteger('lapangan_id');
 			$table->unsignedInteger('jam_id');
-			$table->timestamps();
-			$table->foreign('customer_id')->references('id')->on('customers');
-			$table->foreign('lapangan_id')->references('id')->on('lapangan');
-			$table->foreign('jam_id')->references('id')->on('jam');
+            $table->integer('status')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+			$table->foreign('customer_id')->references('id')
+                ->on('customers')
+                ->onDelete('cascade');
+			$table->foreign('lapangan_id')->references('id')
+                ->on('lapangan')
+                ->onDelete('cascade');
+			$table->foreign('jam_id')->references('id')
+                ->on('jam')
+                ->onDelete('cascade');
 		});
 	}
 

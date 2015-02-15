@@ -14,7 +14,7 @@ class CreateUsers extends Migration {
 	{
 		Schema::create('users', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->nullable();
+            $table->string('username')->unique();
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
             $table->integer('role_id');

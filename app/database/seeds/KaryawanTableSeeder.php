@@ -12,7 +12,7 @@ class KaryawanTableSeeder extends Seeder {
             Karyawan::create(array(
                 'nama' => $faker->name,
                 'alamat' => $faker->address,
-                'pangkat_id' => $faker->numberBetween(1, 4),
+                'pangkat_id' => $faker->numberBetween(1, 3),
             ));
         }
     }

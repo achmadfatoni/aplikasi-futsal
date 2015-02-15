@@ -13,7 +13,11 @@ class AddUserIdentityToUsers extends Migration {
 	public function up()
 	{
 		Schema::table('users', function(Blueprint $table) {
-			$table->string('user_identity')->nullable();
+			$table->integer('user_identity')->unsigned()->nullable();
+            $table->foreign('user_identity')
+                ->references('id')
+                ->on('customers')
+                ->onDelete('cascade');
 		});
 	}
 

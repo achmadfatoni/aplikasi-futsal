@@ -61,8 +61,6 @@ class JamTableSeeder extends Seeder {
 			Jam::create(array(
 				'nama' => '01 - 02',
 			)),
-
-
 		);
 
 		// Uncomment the below to run the seeder

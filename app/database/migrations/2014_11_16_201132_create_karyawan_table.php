@@ -16,7 +16,9 @@ class CreateKaryawanTable extends Migration {
             $table->string('nama');
             $table->string('alamat');
             $table->integer('pangkat_id')->unsigned();
-            $table->foreign('pangkat_id')->references('id')->on('pangkat');
+            $table->foreign('pangkat_id')->references('id')
+                ->on('pangkat')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
