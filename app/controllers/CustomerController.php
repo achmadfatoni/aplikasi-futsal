@@ -112,8 +112,18 @@ class CustomerController extends BaseController
 
     public function getDelete($id)
     {
-        $customer = Customer::find($id);
-        if ($customer->delete()) {
+        $status = false;
+        DB::transaction(function(){
+            $customer = Customer::find($id);
+            $customer->delete();
+            $user = User::whereRoleId(USER_GOLD)
+                ->orWhereRoleId(USER_SILVER)
+                ->whereUserIdentiry($id)
+                ->first();
+            $user->delete();
+            $status = true;
+        });
+        if ($status) {
             return Redirect::to('customer')->with('success', 'Customer berhasil dihapus');
         } else {
             return Redirect::to('customer')->with('error', 'Customer Gagal dihapus');

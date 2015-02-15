@@ -93,6 +93,5 @@ Route::filter('admin', function(){
 	if(Auth::user()->role_id != USER_ADMINISTRATOR){
 		return Redirect::to('booking')->with('error', 'Anda Tidak bisa mengakses halaman yang diminta');
 	}
-
 });
 

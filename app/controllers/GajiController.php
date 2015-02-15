@@ -34,7 +34,7 @@ class GajiController extends BaseController {
 				);
 				$sheet->loadView('gajis.laporan', $data);
 			});
-		})->export('xls');
+		})->export('pdf');
 
 	}
 
