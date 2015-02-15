@@ -28,25 +28,25 @@
             <div class="form-group">
                 <label class="control-label col-md-3" for="nama">Nama *</label>
                 <div class="col-md-9">
-                    <input type="text" name="nama" class="form-control" value="{{ isset($customer->nama) ? $customer->nama : ''}}"/>
+                    <input type="text" name="nama" class="form-control" value="{{ Input::old('nama', isset($customer->nama) ? $customer->nama: null) }}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="alamat">Alamat *</label>
                 <div class="col-md-9">
-                    <input type="text" name="alamat" class="form-control" value="{{isset($customer->alamat) ? $customer->alamat : ''}}"/>
+                    <input type="text" name="alamat" class="form-control" value="{{Input::old('alamat', isset($customer->alamat) ? $customer->alamat : '')}}}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="no_telp">No Telepon *</label>
                 <div class="col-md-9">
-                    <input type="text" name="no_telp" class="form-control" value="{{isset($customer->no_telp) ? $customer->no_telp : ''}}"/>
+                    <input type="text" name="no_telp" class="form-control" value="{{Input::old('no_telp',isset($customer->no_telp) ? $customer->no_telp : '')}}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="team">Team</label>
                 <div class="col-md-9">
-                    <input type="text" name="team" class="form-control" value="{{isset($customer->team) ? $customer->team : ''}}"/>
+                    <input type="text" name="team" class="form-control" value="{{Input::old('team',isset($customer->team) ? $customer->team : '')}}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label for="username" class="col-md-3 control-label">Username *</label>
                 <div class="col-md-9">
-                    <input type="text" name="username" class="form-control" value="{{isset($customer->user->username) ? $customer->user->username : null}}" {{isset($customer->user->username) ? 'disabled' : null}}/>
+                    <input type="text" name="username" class="form-control" value="{{Input::old('username', isset($customer->user->username) ? $customer->user->username : null)}}" {{isset($customer->user->username) ? 'disabled' : null}}/>
                 </div>
             </div>
             <div class="form-group">
