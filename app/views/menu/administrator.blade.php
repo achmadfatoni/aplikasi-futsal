@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav navbar-right">
-    <li><a href="{{URL::to('/admin')}}">Beranda</a></li>
+    <li><a href="{{URL::to('/booking/admin')}}">Beranda</a></li>
     {{--<li><a href="{{URL::to('/booking')}}">Booking</a></li>--}}
     <li><a href="{{URL::to('/customer')}}">Data Customer</a></li>
     <li class="dropdown">
