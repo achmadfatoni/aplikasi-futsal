@@ -71,7 +71,7 @@ class JamController extends BaseController {
 		$data = array(
 			'jam' => $jam,
 		);
-        return View::make('jam.edit');
+        return View::make('jam.edit',$data);
 	}
 
 	/**

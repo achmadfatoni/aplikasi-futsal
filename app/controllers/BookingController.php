@@ -78,7 +78,8 @@ class BookingController extends BaseController
             ->with('customer')
             ->with('lapangan')
             ->with('jam')
-            ->withTrashed()
+            ->where('status','!=',BOOKING_VALIDATED)
+            ->orderBy('created_at','desc')
             ->get();
         $data = array(
             'list' => $list,
