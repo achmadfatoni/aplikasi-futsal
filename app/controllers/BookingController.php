@@ -62,6 +62,7 @@ class BookingController extends BaseController
                 }));
             }))
             ->get();
+//        return $lapangans;
         $data = array(
             'tahun' => $tahun,
             'bulan' => $bulan,
@@ -98,6 +99,7 @@ class BookingController extends BaseController
                     'jam_id' => $booking->jam_id,
                     'tanggal' => $booking->tanggal,
                     'status' => BOOKING_PENDING,
+                    'no_kwitansi' => \Carbon\Carbon::now()->timestamp
                 ));
             }
         });
@@ -133,6 +135,30 @@ class BookingController extends BaseController
         } else {
             return Redirect::back()->with('error', 'Customer Gagal divalidasi');
         }
+    }
+
+    public function getKwitansi(){
+        Excel::create('Kwitansi', function($excel){
+            $excel->sheet('New sheet', function($sheet) {
+                $customerId = Auth::user()->user_identity;
+                $lastBook = Booking::whereCustomerId($customerId)
+                    ->orderBy('no_kwitansi','desc')
+                    ->first();
+
+                $noKwitansi = $lastBook->no_kwitansi;
+
+                $booking = Booking::with(array('jam','lapangan','customer'))
+                    ->orderBy('jam_id')
+                    ->whereNoKwitansi($noKwitansi)
+                    ->get();
+                $data = [
+                    'booking'   => $booking
+                ];
+                $sheet->loadView('booking.kwitansi', $data);
+
+            });
+
+        })->export('pdf');
     }
 
 }

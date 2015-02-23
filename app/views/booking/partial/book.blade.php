@@ -38,13 +38,22 @@
                 $bookings = $jam->booking;
                 ?>
                 @if($bookings->count() > 0)
+                    <?php $bookingCount = 0; ?>
                     @foreach($bookings as $booking)
-                        @if($booking->lapangan_id == $lapangan->id)
-                            <button class="form-control btn btn-danger" disabled>Booked</button>
-                        @else
-                            <button class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</button>
-                        @endif
+                        <?php
+                            if($booking->lapangan_id == $lapangan->id){
+                                $bookingCount++;
+                            }
+                        ?>
                     @endforeach
+                    @if($bookingCount > 0)
+                            <button class="form-control btn btn-danger" disabled>Booked</button>
+                    @else
+                    {{--@if($booking->lapangan_id == $lapangan->id)--}}
+                        {{--<button class="form-control btn btn-danger" disabled>Booked</button>--}}
+                    {{--@else--}}
+                        <button class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</button>
+                    @endif
                 @else
                     <button class="form-control btn btn-default booking" lapangan-id="{{ $lapangan->id }}" jam-id="{{ $jam->id }}">Jam : {{ $jam->nama }} | Harga : {{ $jam->pivot->harga }}</button>
                 @endif

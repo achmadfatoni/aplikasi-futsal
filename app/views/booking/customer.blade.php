@@ -77,19 +77,27 @@
             var proses = $('.proses');;
             proses.click(function(){
 //                console.log(data);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ URL::to('booking/save') }}",
-                    data: {data : JSON.stringify(booked)},
-                    dataType : 'json',
-                    success: function(result){
-                        var message = result.message;
-                        if(message == 'success')
-                        {
-                            window.location.href = '{{ URL::to(Request::path()) }}';
+                if(booked.length < 1){
+                    alert("Anda belum memilih lapangan");
+                }else{
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ URL::to('booking/save') }}",
+                        data: {data : JSON.stringify(booked)},
+                        dataType : 'json',
+                        success: function(result){
+                            var message = result.message;
+                            if(message == 'success')
+                            {
+{{--                                window.location.href = '{{ URL::to('booking/kwitansi') }}';--}}
+{{--                                window.location.href = '{{ URL::to(Request::path()) }}';--}}
+                                window.open('{{ URL::to('booking/kwitansi') }}', '_blank');
+                                window.location.href = '{{ URL::to(Request::path()) }}';
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
             });
         });
     </script>
