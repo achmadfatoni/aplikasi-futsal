@@ -26,9 +26,10 @@ class AboutController extends BaseController{
     }
 
     public function guest(){
-        $page = Page::find(PAGE_ABOUT);
+
         $data = array(
-            'contents' => $page->contents,
+//            'contents' => $page->contents,
+            'page' => Page::find(PAGE_ABOUT),
         );
         return View::make('about.guest', $data);
     }
@@ -39,6 +40,26 @@ class AboutController extends BaseController{
         $page = Page::find(PAGE_ABOUT);
         $page->contents = $contents;
         $page->type = $type;
+        if(Input::hasFile('gambar1')){
+            $destinationPath = public_path('page');
+            $extension = Input::file('gambar1')->getClientOriginalExtension();
+            $name = \Carbon\Carbon::now()->timestamp;
+            $fileName = $name .'.'. $extension;
+            $upload = Input::file('gambar1')->move($destinationPath, $fileName);
+            if($upload){
+                $page->gambar1 = $fileName;
+            }
+        }
+        if(Input::hasFile('gambar2')){
+            $destinationPath = public_path('page');
+            $extension = Input::file('gambar2')->getClientOriginalExtension();
+            $name = \Carbon\Carbon::now()->timestamp;
+            $fileName = $name .'.'. $extension;
+            $upload = Input::file('gambar2')->move($destinationPath, $fileName);
+            if($upload){
+                $page->gambar2 = $fileName;
+            }
+        }
         if($page->save()){
             return Redirect::to('about')->with('success', 'Berhasil di perbarui');
         }else{

@@ -8,8 +8,20 @@
     </div>
 </div><div class="row mt">
     <div class="col-md-8 col-md-offset-2">
-       <div>{{$contents}}
+       <div>
+           {{$page->contents}}
        </div>
+        @if(isset($page->gambar1))
+            <div class="text-center">
+                <img src="{{ URL::to('page/'.$page->gambar1) }}" width="600px" height="600px"/>
+            </div>
+        @endif
+        <br>
+        @if(isset($page->gambar2))
+            <div class="text-center">
+                <img src="{{ URL::to('page/'.$page->gambar2) }}" width="600px" height="600px"/>
+            </div>
+        @endif
     </div>
 </div>
 

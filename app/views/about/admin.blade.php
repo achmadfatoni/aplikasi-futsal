@@ -14,9 +14,17 @@
 </div>
 <div class="row mt">
     <div class="col-md-8 col-md-offset-2">
-        <form method="POST" action="{{$action}}" role="form">
+        <form method="POST" action="{{$action}}" role="form" enctype="multipart/form-data">
             <div class="form-group">
                 <textarea name="contents" class="ckeditor">{{$contents}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Gambar 1</label>
+                <input type="file" name="gambar1"/>
+            </div>
+            <div class="form-group">
+                <label>Gambar 2</label>
+                <input type="file" name="gambar2"/>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Update"/>
