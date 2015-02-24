@@ -13,6 +13,11 @@
  */
 class KaryawanController extends BaseController {
 
+    public function __construct(){
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
+    }
+
     public function getIndex() {
 //        return Karyawan::with('pangkat')->get();
         $data = array(

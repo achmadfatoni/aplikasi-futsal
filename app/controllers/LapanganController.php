@@ -11,6 +11,8 @@ class LapanganController extends BaseController {
         $this->jam = $jam;
         $this->lapanganjam = $lapanganjam;
         $this->booking = $booking;
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
     }
 
     /**

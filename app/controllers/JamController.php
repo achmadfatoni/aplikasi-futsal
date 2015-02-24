@@ -6,6 +6,8 @@ class JamController extends BaseController {
 	public function __construct(Jam $jam)
 	{
 		$this->jam = $jam;
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
 	}
 
 	/**

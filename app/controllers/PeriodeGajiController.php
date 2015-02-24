@@ -10,6 +10,8 @@ class PeriodeGajiController extends BaseController {
 	{
 		$this->periodeGaji = $periodeGaji;
 		$this->gaji = $gaji;
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
 	}
 
 	/**

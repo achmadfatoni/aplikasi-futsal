@@ -7,21 +7,14 @@ class GajiController extends BaseController {
 	public function __construct(Gaji $gaji)
 	{
 		$this->gaji = $gaji;
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
 	}
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-//	public function index($periodeId)
-//	{
-//		$gaji = $this->gaji->with('karyawan')->get();
-//		$data = array(
-//			'list' => $gaji,
-//			'periodeId' => $periodeId,
-//		);
-//		return View::make('gajis.index', $data);
-//	}
 
 	public function index($periodeId)
 	{
@@ -34,7 +27,7 @@ class GajiController extends BaseController {
 				);
 				$sheet->loadView('gajis.laporan', $data);
 			});
-		})->export('pdf');
+		})->export('xls');
 
 	}
 

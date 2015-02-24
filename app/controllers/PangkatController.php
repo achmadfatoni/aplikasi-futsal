@@ -13,6 +13,11 @@
  */
 class PangkatController extends BaseController {
 
+    public function __construct(){
+        $this->beforeFilter('auth');
+        $this->beforeFilter('admin');
+    }
+
     public function getIndex() {
         $data = array(
             'createUrl' => URL::to('pangkat/create'),
