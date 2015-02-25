@@ -5,6 +5,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h3 class="text-center">Login</h3>
             <p class="text-center">Anda harus login dulu</p>
+             <p class="text-center">jika anda belum mempunyai username dan password silakan datang ke aka benpas futsal mojokerto</p>
         </div>
     </div>
     <div class="row">

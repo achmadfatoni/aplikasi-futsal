@@ -186,8 +186,8 @@ class LapanganController extends BaseController {
             ->whereStatus(BOOKING_VALIDATED);
 
         if(Input::has('dari') && Input::has('sampai')){
-            $query->where('tanggal','>', Input::get('dari'))
-                ->where('tanggal','<', Input::get('sampai'));
+            $query->where('tanggal','>=', Input::get('dari'))
+                ->where('tanggal','<=', Input::get('sampai'));
         }
 
         $list = $query->get();
@@ -211,8 +211,8 @@ class LapanganController extends BaseController {
 
 
                 if(Input::has('dari') && Input::has('sampai')){
-                    $query->where('tanggal','>', Input::get('dari'))
-                        ->where('tanggal','<', Input::get('sampai'));
+                    $query->where('tanggal','>=', Input::get('dari'))
+                        ->where('tanggal','<=', Input::get('sampai'));
                 }
 
                 $list = $query->get();
