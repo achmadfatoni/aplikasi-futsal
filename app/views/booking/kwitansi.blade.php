@@ -29,6 +29,10 @@
     <body>
     <table class="gridtable">
         <tr>
+            <td colspan="3">Username :</td>
+            <td>{{ Auth::user()->username }}</td>
+        </tr>
+        <tr>
             <td>No</td>
             <td>Lapangan</td>
             <td>Jam</td>
