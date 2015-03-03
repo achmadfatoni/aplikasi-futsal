@@ -46,6 +46,7 @@
                     <th class="text-center">Tanggal</th>
                     <th class="text-center">Lapangan</th>
                     <th class="text-center">Jam</th>
+                    <th class="text-center">Harga</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,13 @@
                         <td class="text-center">{{ $data->tanggal }}</td>
                         <td class="text-center">{{ $data->lapangan->nama }}</td>
                         <td class="text-center">{{ $data->jam->nama }}</td>
+                        <td class="text-center">
+                            @foreach($data->lapangan->jam as $jam)
+                                @if($data->jam_id == $jam->id)
+                                    {{ $jam->pivot->harga }}
+                                @endif
+                            @endforeach
+                        </td>
                     </tr>
                     <?php $no++; ?>
                 @endforeach

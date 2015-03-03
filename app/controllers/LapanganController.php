@@ -179,18 +179,8 @@ class LapanganController extends BaseController {
         if(Input::has('bulan')){
             $bulan = Input::get('bulan');
         }
-        $query = $this->booking
-            ->with('customer')
-            ->with('lapangan')
-            ->with('jam')
-            ->whereStatus(BOOKING_VALIDATED);
 
-        if(Input::has('dari') && Input::has('sampai')){
-            $query->where('tanggal','>=', Input::get('dari'))
-                ->where('tanggal','<=', Input::get('sampai'));
-        }
-
-        $list = $query->get();
+        $list = $this->query();
 
         $data = [
             'bulans' => Lang::get('bulan'),
@@ -201,29 +191,35 @@ class LapanganController extends BaseController {
     }
 
     public function export(){
-        Excel::create('Laporan', function($excel){
-            $excel->sheet('New sheet', function($sheet) {
-                $query = $this->booking
-                    ->with('customer')
-                    ->with('lapangan')
-                    ->with('jam')
-                    ->whereStatus(BOOKING_VALIDATED);
-
-
-                if(Input::has('dari') && Input::has('sampai')){
-                    $query->where('tanggal','>=', Input::get('dari'))
-                        ->where('tanggal','<=', Input::get('sampai'));
-                }
-
-                $list = $query->get();
+        $query = $this->query();
+        Excel::create('Laporan', function($excel) use ($query){
+            $excel->sheet('New sheet', function($sheet) use ($query){
+                $list = $query;
                 $data = [
                     'list' => $list,
                 ];
                 $sheet->loadView('lapangans.export', $data);
-
             });
 
         })->export('xls');
+    }
+
+    public function query(){
+        $query = $this->booking
+            ->with('customer')
+            ->with('lapangan')
+            ->with('jam')
+            ->with(array('lapangan' => function($q){
+                $q->with('jam');
+            }))
+            ->whereStatus(BOOKING_VALIDATED);
+
+        if(Input::has('dari') && Input::has('sampai')){
+            $query->where('tanggal','>=', Input::get('dari'))
+                ->where('tanggal','<=', Input::get('sampai'));
+        }
+
+        return $query->get();
     }
 
 }
