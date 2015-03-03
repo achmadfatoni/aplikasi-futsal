@@ -90,7 +90,9 @@ class BookingController extends BaseController
 
     public function postSave()
     {
-        $query = Booking::whereCustomerId(Auth::user()->user_identity)->count();
+        $query = Booking::whereCustomerId(Auth::user()->user_identity)
+                            ->where('status','!=', BOOKING_VALIDATED)
+                            ->count();
         if($query >= 2) {
             $data = array(
                 'message' => 'failed',
