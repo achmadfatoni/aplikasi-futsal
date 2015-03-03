@@ -90,24 +90,29 @@ class BookingController extends BaseController
 
     public function postSave()
     {
-        $bookings = json_decode(Input::get('data'));
-        DB::transaction(function () use ($bookings) {
-            foreach ($bookings as $booking) {
-                Booking::create(array(
-                    'customer_id' => Auth::user()->user_identity,
-                    'lapangan_id' => $booking->lapangan_id,
-                    'jam_id' => $booking->jam_id,
-                    'tanggal' => $booking->tanggal,
-                    'status' => BOOKING_PENDING,
-                    'no_kwitansi' => \Carbon\Carbon::now()->timestamp
-                ));
-            }
-        });
-
-        $data = array(
-            'message' => 'success',
-        );
-
+        $query = Booking::whereCustomerId(Auth::user()->user_identity)->count();
+        if($query >= 2) {
+            $data = array(
+                'message' => 'failed',
+            );
+        }else{
+            $bookings = json_decode(Input::get('data'));
+            DB::transaction(function () use ($bookings) {
+                foreach ($bookings as $booking) {
+                    Booking::create(array(
+                        'customer_id' => Auth::user()->user_identity,
+                        'lapangan_id' => $booking->lapangan_id,
+                        'jam_id' => $booking->jam_id,
+                        'tanggal' => $booking->tanggal,
+                        'status' => BOOKING_PENDING,
+                        'no_kwitansi' => \Carbon\Carbon::now()->timestamp
+                    ));
+                }
+            });
+            $data = array(
+                'message' => 'success',
+            );
+        }
         return $data;
     }
 

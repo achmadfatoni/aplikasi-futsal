@@ -93,6 +93,8 @@
 {{--                                window.location.href = '{{ URL::to(Request::path()) }}';--}}
                                 window.open('{{ URL::to('booking/kwitansi') }}', '_blank');
                                 window.location.href = '{{ URL::to(Request::path()) }}';
+                            }else{
+                                alert("anda sudah booking 2 lapangan, silahkan hubungi operator untuk info lebih lanjut.")
                             }
                         }
                     });
