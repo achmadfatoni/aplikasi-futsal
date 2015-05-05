@@ -7,7 +7,7 @@
 @section('contents')
 <div class="row mt">
     <div class="col-md-12">
-        <h3>DAFTAR CUSTOMER</h3>
+        <h3>DAFTAR KARYAWAN</h3>
         <hr>
     </div>
 </div>

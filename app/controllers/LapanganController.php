@@ -180,7 +180,22 @@ class LapanganController extends BaseController {
             $bulan = Input::get('bulan');
         }
 
-        $list = $this->query();
+          $query = $this->booking
+            ->with('customer')
+            ->with('lapangan')
+            ->with('jam')
+            ->with(array('lapangan' => function($q){
+                $q->with('jam');
+            }))
+            ->whereStatus(BOOKING_VALIDATED);
+
+        if(Input::has('dari') && Input::has('sampai')){
+            $query->where('tanggal','>=', Input::get('dari'))
+                ->where('tanggal','<=', Input::get('sampai'));
+        }
+
+
+        $list = $query->get();
 
         $data = [
             'bulans' => Lang::get('bulan'),
@@ -191,10 +206,23 @@ class LapanganController extends BaseController {
     }
 
     public function export(){
-        $query = $this->query();
+    
+          $query = $this->booking
+            ->with('customer')
+            ->with('lapangan')
+            ->with('jam')
+            ->with(array('lapangan' => function($q){
+                $q->with('jam');
+            }))
+            ->whereStatus(BOOKING_VALIDATED);
+
+        if(Input::has('dari') && Input::has('sampai')){
+            $query->where('tanggal','>=', Input::get('dari'))
+                ->where('tanggal','<=', Input::get('sampai'));
+        }
         Excel::create('Laporan', function($excel) use ($query){
             $excel->sheet('New sheet', function($sheet) use ($query){
-                $list = $query;
+                $list = $query->get();
                 $data = [
                     'list' => $list,
                 ];

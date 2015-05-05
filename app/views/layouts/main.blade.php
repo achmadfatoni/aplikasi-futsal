@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{URL::to('/')}}">AKA Benpas</a>
+          <a class="navbar-brand" href="{{URL::to('/')}}">AKA BENPAS</a>
         </div>
         <div class="navbar-collapse collapse">
             @include('layouts.menu')
@@ -56,7 +56,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 centered">
-				    <p>&copy;Copyright <a href="#">AKA Benpas</a> 2014</p>
+				    <p>&copy;Copyright <a href="#">M asrul annas</a> 2014</p>
 				</div>
 			</div>
 

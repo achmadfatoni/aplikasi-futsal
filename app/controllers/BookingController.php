@@ -131,7 +131,7 @@ class BookingController extends BaseController
         if ($booking->delete()) {
             return Redirect::back()->with('success', 'Booking berhasil dihapus');
         } else {
-            return Redirect::back()->with('error', 'Customer Gagal dihapus');
+            return Redirect::back()->with('error', 'Booking Gagal dihapus');
         }
     }
 
@@ -144,7 +144,7 @@ class BookingController extends BaseController
         if ($update) {
             return Redirect::back()->with('success', 'Booking berhasil divalidasi');
         } else {
-            return Redirect::back()->with('error', 'Customer Gagal divalidasi');
+            return Redirect::back()->with('error', 'Booking Gagal divalidasi');
         }
     }
 

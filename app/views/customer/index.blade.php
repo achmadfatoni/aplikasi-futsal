@@ -32,6 +32,7 @@
                         <th class="text-center">No Telepon</th>
                         <th class="text-center">Team</th>
                         <th class="text-center">Jenis Customer</th>
+                        <th class="text-center">Tanggal daftar</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@
                         <td class="text-center">{{$row->no_telp}}</td>
                         <td class="text-center">{{$row->team}}</td>
                         <td class="text-center">{{Lang::get('jenis_customer.'.$row->jenis_customer)}}</td>
+                        <td class="text-center">{{ Date('d - m - Y', strtotime($row->created_at))}}</td>
                         <td class="text-center">
                             <div>
                                 <a href="{{URL::to('customer/edit/'.$row->id)}}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil white"></i></a>

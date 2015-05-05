@@ -10,6 +10,7 @@
             <li><a href="{{URL::to('/lapangan/pemakaian')}}">Laporan Pemakaian</a></li>
         </ul>
     </li>
+    <!--
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manajemen<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
@@ -18,6 +19,7 @@
             <li><a href="{{URL::to('periode-gaji')}}">Gaji</a></li>
         </ul>
     </li>
+    -->
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Halaman<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">

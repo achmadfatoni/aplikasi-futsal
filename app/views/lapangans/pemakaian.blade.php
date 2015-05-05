@@ -13,6 +13,9 @@
                 <input type="date" name="dari" class="form-control"/>
             </div>
             <div class="form-group">
+                <label>Sampai</label>
+            </div>
+            <div class="form-group">
                 <input type="date" name="sampai" class="form-control"/>
             </div>
             <div class="form-group">
@@ -23,6 +26,9 @@
         <form class="form-inline" action="{{ URL::to('lapangan/export') }}">
             <div class="form-group">
                 <input type="date" name="dari" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Sampai</label>
             </div>
             <div class="form-group">
                 <input type="date" name="sampai" class="form-control"/>
@@ -55,7 +61,7 @@
                     <tr>
                         <td class="text-center">{{ $no }}</td>
                         <td class="text-center">{{ $data->customer->nama }}</td>
-                        <td class="text-center">{{ $data->tanggal }}</td>
+                        <td class="text-center">{{ Date('d - m - Y',strtotime($data->tanggal)) }}</td>
                         <td class="text-center">{{ $data->lapangan->nama }}</td>
                         <td class="text-center">{{ $data->jam->nama }}</td>
                         <td class="text-center">

@@ -3,7 +3,7 @@
 @section('contents')
 <div class="row mt">
     <div class="col-md-8 col-md-offset-2">
-        <h3>TAMBAH CUSTOMER</h3>
+        <h3>TAMBAH PANGKAT</h3>
         <hr>
     </div>
 </div>

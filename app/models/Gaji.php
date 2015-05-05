@@ -9,6 +9,6 @@ class Gaji extends Eloquent {
 
 	public function karyawan()
 	{
-		return $this->belongsTo('karyawan');
+		return $this->belongsTo('Karyawan');
 	}
 }

@@ -5,6 +5,16 @@
     <div class="row">
         @include('layouts.notifikasi')
     </div>
+    <p><h2>Tatacara Pemesanan Lapangan:</h2>
+    <ol>
+        <h4><li>Silahkan memilih tanggal dan bulan kapan anda bermain futsal dan tekan tombol cari.</li></h4>
+        <h4><li>Setelah memilih tanggal silahkan pilih lapangan dan klik pada jam yang ingin anda pesan.</li></h4>
+        <h4><li>Anda dapat memilih jam pada lapangan manapun maksimal 2 jam pemesanan sekali pesan, 
+                jika ingin memesan lebih dari 2 jam silahkan konfirmasi ke aka benpas.</li></h4>
+        <h4><li>Jika sudah, klik tombol "Proses" yang berada di bawah jadwal lapangan futsal.</li></h4>
+        <h4><li>secara otomatis Nota booking akan terunduh dalam bentuk "pdf".</li></h4>
+        <h4><li>Silahkan dibawa nota booking ketika anda akan bermain dan di perlihatkan ke kasir.</li></h4>
+    </ol></p>
     @include('booking.partial.book')
     <div class="row mt">
         <div class="col-md-12 centered">

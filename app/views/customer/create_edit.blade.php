@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label class="control-label col-md-3" for="alamat">Alamat *</label>
                 <div class="col-md-9">
-                    <input type="text" name="alamat" class="form-control" value="{{Input::old('alamat', isset($customer->alamat) ? $customer->alamat : '')}}}"/>
+                    <input type="text" name="alamat" class="form-control" value="{{Input::old('alamat', isset($customer->alamat) ? $customer->alamat : '')}}"/>
                 </div>
             </div>
             <div class="form-group">
