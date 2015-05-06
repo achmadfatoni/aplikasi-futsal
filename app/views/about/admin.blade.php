@@ -27,6 +27,10 @@
                 <input type="file" name="gambar2"/>
             </div>
             <div class="form-group">
+                <label>Gambar 3</label>
+                <input type="file" name="gambar3"/>
+            </div>
+            <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Update"/>
             </div>
         </form>

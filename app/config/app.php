@@ -124,6 +124,7 @@ return array(
 
         'Way\Generators\GeneratorsServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Barryvdh\DomPDF\ServiceProvider',
 
 
     ),
@@ -193,6 +194,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'PDF' => 'Barryvdh\DomPDF\Facade',
 	),
 
 );

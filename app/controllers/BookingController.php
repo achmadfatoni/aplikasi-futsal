@@ -149,8 +149,6 @@ class BookingController extends BaseController
     }
 
     public function getKwitansi(){
-        Excel::create('Kwitansi', function($excel){
-            $excel->sheet('New sheet', function($sheet) {
                 $customerId = Auth::user()->user_identity;
                 $lastBook = Booking::whereCustomerId($customerId)
                     ->orderBy('no_kwitansi','desc')
@@ -165,11 +163,9 @@ class BookingController extends BaseController
                 $data = [
                     'booking'   => $booking
                 ];
-                $sheet->loadView('booking.kwitansi', $data);
+                $pdf = PDF::loadView('booking.kwitansi', $data);
 
-            });
-
-        })->export('pdf');
+                return $pdf->download('kwitansi.pdf');
     }
 
 }

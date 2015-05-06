@@ -60,6 +60,16 @@ class AboutController extends BaseController{
                 $page->gambar2 = $fileName;
             }
         }
+        if(Input::hasFile('gambar3')){
+            $destinationPath = public_path('page');
+            $extension = Input::file('gambar3')->getClientOriginalExtension();
+            $name = \Carbon\Carbon::now()->timestamp;
+            $fileName = $name .'.'. $extension;
+            $upload = Input::file('gambar3')->move($destinationPath, $fileName);
+            if($upload){
+                $page->gambar3 = $fileName;
+            }
+        }
         if($page->save()){
             return Redirect::to('about')->with('success', 'Berhasil di perbarui');
         }else{

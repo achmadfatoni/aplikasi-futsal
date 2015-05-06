@@ -1,6 +1,5 @@
 <html>
     <head>
-
         <!-- CSS goes in the document HEAD or added to your external stylesheet -->
         <style type="text/css">
             /*table.gridtable {*/
@@ -21,33 +20,50 @@
             /*}*/
             table.gridtable td {
                 border-style: solid;
-                border-width: 1px;
+                border-width: 0.5px;
                 border-color: #000000;
+            }
+            .text-center {
+                text-align: center;
             }
         </style>
     </head>
     <body>
-    <table class="gridtable">
-        <tr>
-            <td colspan="3">Username :</td>
-            <td>{{ Auth::user()->username }}</td>
-        </tr>
-        <tr>
-            <td>No</td>
-            <td>Lapangan</td>
-            <td>Jam</td>
-            <td>Tanggal</td>
-        </tr>
-        <?php $no = 1; ?>
-        @foreach($booking as $data)
-        <tr>
-            <td>{{ $no }}</td>
-            <td>{{ $data->lapangan->nama }}</td>
-            <td>{{ $data->jam->nama }}</td>
-            <td>{{ $data->tanggal }}</td>
-        </tr>
-        <?php $no++ ?>
-        @endforeach
-    </table>
+    <section id="container" class="print">
+        <!-- <section id="main-content"> -->
+        <section class="container">
+
+            <section class="panel">
+                <div class="panel-body invoice">
+                    <table class="gridtable" width="100%">
+                        <tr>
+                            <td colspan="3">Username :</td>
+                            <td>{{ Auth::user()->username }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">No</td>
+                            <td class="text-center">Lapangan</td>
+                            <td class="text-center">Jam</td>
+                            <td class="text-center">Tanggal</td>
+                        </tr>
+                        <?php $no = 1; ?>
+                        @foreach($booking as $data)
+                            <tr>
+                                <td class="text-center">{{ $no }}</td>
+                                <td class="text-center">{{ $data->lapangan->nama }}</td>
+                                <td class="text-center">{{ $data->jam->nama }}</td>
+                                <td class="text-center">{{ $data->tanggal }}</td>
+                            </tr>
+                            <?php $no++ ?>
+                        @endforeach
+                    </table>
+                </div>
+            </section>
+
+            <!-- </section> -->
+            <!-- </section> -->
+        </section>
+
+
     </body>
 </html>
