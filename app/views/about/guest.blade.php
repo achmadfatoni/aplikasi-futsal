@@ -22,6 +22,11 @@
                 <img src="{{ URL::to('page/'.$page->gambar2) }}" width="600px" height="600px"/>
             </div>
         @endif
+        @if($page->gambar3 != "")
+            <div class="text-center">
+                <img src="{{ URL::to('page/'.$page->gambar3) }}" width="600px" height="600px"/>
+            </div>
+        @endif
     </div>
 </div>
 
