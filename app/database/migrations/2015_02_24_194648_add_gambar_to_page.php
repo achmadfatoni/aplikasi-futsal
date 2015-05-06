@@ -15,6 +15,7 @@ class AddGambarToPage extends Migration {
 		Schema::table('page', function(Blueprint $table) {
 			$table->string('gambar1');
 			$table->string('gambar2');
+			$table->string('gambar3');
 		});
 	}
 
@@ -28,6 +29,7 @@ class AddGambarToPage extends Migration {
 		Schema::table('page', function(Blueprint $table) {
 			$table->dropColumn('gambar1');
 			$table->dropColumn('gambar2');
+			$table->dropColumn('gambar3');
 		});
 	}
 
