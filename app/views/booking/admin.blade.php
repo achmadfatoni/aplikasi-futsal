@@ -47,13 +47,13 @@
                             <td class="text-center">{{ date("d-m-Y", strtotime($data->tanggal ))}}</td>
                             <td class="text-center">{{ $data->lapangan->nama }}</td>
                             <td class="text-center">{{ $data->jam->nama }}</td>
-                            {{--<td class="text-center">
+                            <td class="text-center">
                                 @foreach($data->lapangan->jam as $jam)
                                     @if($data->jam_id == $jam->id)
                                         {{ $jam->pivot->harga }}
                                     @endif
                                 @endforeach
-                            </td>--}}
+                            </td>
                             {{--                            <td class="text-center">{{ Lang::get('book_status.'.$data->status) }}</td>--}}
                             <td class="text-center">
                                 @if($data->status == BOOKING_PENDING)
